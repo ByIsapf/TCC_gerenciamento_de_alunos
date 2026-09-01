@@ -3,9 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela inicial</title>
+    <title>Gerenciamento de Alunos | Acesso</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
-<body>
-    
+
+<body class="login-page">
+
+  <!-- Container principal que organiza as duas partes da tela:
+       apresentação do sistema + formulário de acesso -->
+  <main class="login-container">
+
+    <!-- =========================
+         LADO ESQUERDO - IDENTIDADE
+         ========================= -->
+
+    <section class="login-brand">
+
+      <!-- Abreviação do sistema exibida como marca/logo -->
+      <div class="brand-mark">GA</div>
+
+      <!-- Texto pequeno acima do título principal -->
+      <p class="eyebrow">Sistema escolar</p>
+
+      <!-- Nome do sistema -->
+      <h1>Gerenciamento<br>de Alunos</h1>
+
+      <!-- Descrição resumida da função do sistema -->
+      <p>
+        Controle de entrada e saída de forma simples, rápida e segura.
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         LADO DIREITO - FORMULÁRIO
+         ========================= -->
+
+    <section class="login-card">
+
+      <!-- Cabeçalho do formulário de acesso -->
+      <div class="card-head">
+
+        <!-- Ícone de segurança -->
+        <span class="mini-icon">🔐</span>
+
+        <div>
+          <h2>Acesso</h2>
+          <p>Entre para continuar</p>
+        </div>
+
+      </div>
+
+
+      <!--
+        Formulário utilizado pelo aluno para registrar
+        sua entrada ou saída da escola.
+
+        Os dados preenchidos aqui serão posteriormente
+        utilizados pelo JavaScript e pelo banco de dados.
+      -->
+      <form id="studentForm">
+
+        <!-- =========================
+             CAMPO: RA DO ALUNO
+             ========================= -->
+
+        <!-- Identificação do aluno -->
+        <label for="ra">RA do aluno</label>
+
+        <!--
+          Campo onde o aluno informa seu RA.
+          O ID "ra" é utilizado pelo JavaScript
+          para acessar o valor digitado.
+        -->
+        <input
+          id="ra"
+          type="text"
+          placeholder="Digite seu RA"
+          autocomplete="off"
+          required
+        >
+
+
+        <!-- =========================
+             CAMPO: SENHA
+             ========================= -->
+
+        <!-- Senha cadastrada pelo aluno -->
+        <label for="password">Senha</label>
+
+        <!--
+          Campo de senha.
+          O type="password" faz com que os caracteres
+          digitados não fiquem visíveis.
+        -->
+        <input
+          id="password"
+          type="password"
+          placeholder="Digite sua senha"
+          required
+        >
+
+
+        <!-- =========================
+             CAMPO: QR CODE
+             ========================= -->
+
+        <!-- Código apresentado pelo QR Code da escola -->
+        <label for="qrCode">Código do QR Code</label>
+
+        <!--
+          Campo onde será informado o código exibido
+          pelo QR Code.
+
+          Exemplo:
+          ESC-2026-184
+        -->
+        <input
+          id="qrCode"
+          type="text"
+          placeholder="Ex.: ESC-2026-184"
+          autocomplete="off"
+          required
+        >
+
+
+        <!-- =========================
+             BOTÃO DE REGISTRO
+             ========================= -->
+
+        <!--
+          Ao clicar, o formulário é enviado.
+          O JavaScript será responsável por validar
+          os dados e realizar o registro do acesso.
+        -->
+        <button class="primary-btn" type="submit">
+          Registrar acesso <span>→</span>
+        </button>
+
+
+        <!--
+          Área destinada às mensagens do sistema.
+
+          O JavaScript pode utilizar este elemento
+          para mostrar mensagens como:
+          - Login realizado com sucesso
+          - RA ou senha incorretos
+          - Código QR inválido
+          - Campos obrigatórios
+        -->
+        <p id="loginMessage" class="form-message"></p>
+
+      </form>
+
+
+      <!-- =========================
+           ACESSO DA SECRETARIA
+           ========================= -->
+
+      <div class="secretary-link">
+
+        <span>É da secretaria?</span>
+
+        <!--
+          Link para a página de login da secretaria.
+
+          A secretaria possui um painel administrativo
+          diferente da tela utilizada pelos alunos.
+        -->
+        <a href="secretaria/login.html"> 
+          Acessar painel administrativo
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="js/student.js"></script>
+
 </body>
 </html>

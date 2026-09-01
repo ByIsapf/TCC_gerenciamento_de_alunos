@@ -1,0 +1,166 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secretaria | Login</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="login-page">
+
+  <!--
+    Cartão principal do login da secretaria.
+    O style define uma largura máxima de 430px
+    para deixar o formulário mais compacto.
+  -->
+  <main class="login-card" style="width: min(430px, 100%);">
+
+    <!-- =========================
+         CABEÇALHO DO LOGIN
+         ========================= -->
+
+    <div class="card-head">
+
+      <!-- Ícone que representa a secretaria -->
+      <span class="mini-icon">🧑‍💼</span>
+
+      <div>
+        <!-- Título da área -->
+        <h2>Área da secretaria</h2>
+
+        <!-- Aviso de que o acesso é restrito -->
+        <p>Acesso restrito aos responsáveis</p>
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         FORMULÁRIO DE LOGIN
+         ========================= -->
+
+    <!--
+      Formulário utilizado para autenticar
+      o responsável pela secretaria.
+    -->
+    <form id="secretaryForm">
+
+      <!-- Campo de e-mail -->
+      <label for="email">E-mail</label>
+
+      <!--
+        type="email" faz o navegador verificar
+        se o valor possui formato de e-mail.
+      -->
+      <input
+        id="email"
+        type="email"
+        placeholder="secretaria@escola.com"
+        required
+      >
+
+
+      <!-- Campo de senha -->
+      <label for="password">Senha</label>
+
+      <!--
+        type="password" esconde os caracteres
+        digitados pelo usuário.
+      -->
+      <input
+        id="password"
+        type="password"
+        placeholder="Digite sua senha"
+        required
+      >
+
+
+      <!--
+        Botão responsável por enviar o formulário.
+        O JavaScript abaixo controla o que acontece
+        quando este botão é clicado.
+      -->
+      <button class="primary-btn" type="submit">
+        Entrar <span>→</span>
+      </button>
+
+
+      <!--
+        Área reservada para mensagens de erro ou sucesso.
+
+        Futuramente, o JavaScript pode mostrar aqui
+        mensagens como:
+        "E-mail ou senha incorretos."
+      -->
+      <p id="secretaryMessage" class="form-message"></p>
+
+    </form>
+
+
+    <!-- =========================
+         VOLTAR PARA LOGIN DO ALUNO
+         ========================= -->
+
+    <div class="secretary-link">
+
+      <!--
+        Link que leva de volta para a tela
+        principal de acesso dos alunos.
+      -->
+      <a href="../index.html">
+        ← Voltar para acesso do aluno
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <!-- =========================
+       JAVASCRIPT DO LOGIN
+       ========================= -->
+
+  <script>
+
+    /*
+      Seleciona o formulário da secretaria
+      através do ID "secretaryForm".
+
+      O evento "submit" é executado quando
+      o usuário envia o formulário.
+    */
+    document
+      .getElementById("secretaryForm")
+      .addEventListener("submit", (e) => {
+
+        /*
+          Impede o comportamento padrão do formulário,
+          que seria recarregar a página.
+        */
+        e.preventDefault();
+
+        /*
+          Redireciona a secretaria para o dashboard.
+
+          IMPORTANTE:
+          Atualmente o login é apenas visual.
+          O sistema ainda não verifica o e-mail e a senha
+          no banco de dados.
+
+          Futuramente, essa parte deverá ser integrada
+          ao backend/banco de dados para validar
+          as credenciais antes de liberar o acesso.
+        */
+        window.location.href = "dashboard.html";
+
+      });
+
+  </script>
+
+</body>
+</html>
+```

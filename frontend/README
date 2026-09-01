@@ -1,0 +1,49 @@
+# Gerenciamento de Alunos — Front-end
+
+Front-end inicial do TCC para controle de entrada e saída de alunos por QR Code.
+
+## Estrutura
+
+- `index.html` — tela usada pelo aluno para informar RA, senha e código do QR Code.
+- `secretaria/login.html` — acesso da secretaria.
+- `secretaria/dashboard.html` — painel administrativo.
+- `css/style.css` — estilos e responsividade.
+- `js/student.js` — comportamento da tela do aluno.
+- `js/dashboard.js` — dados demonstrativos do dashboard.
+
+## Como abrir
+
+1. Abra a pasta no VS Code.
+2. Instale/abra com Live Server, se quiser.
+3. Abra `index.html`.
+4. Para testar o painel, clique em “Acessar painel administrativo”.
+5. O login da secretaria é apenas demonstrativo por enquanto.
+6. Pode usar por enquanto qualquer email e senha.
+
+## Integração com o backend
+
+O front está separado da lógica do banco. O backend poderá substituir os dados demonstrativos por chamadas à API.
+
+A tela do aluno deverá enviar:
+- `ra`
+- `password`
+- `qrCode`
+
+O backend deverá responder se:
+- o RA existe;
+- a senha está correta;
+- o QR Code é válido;
+- o registro é uma entrada ou saída;
+- o horário do registro;
+- o status do aluno.
+
+O dashboard deverá receber da API dados como:
+- alunos presentes;
+- alunos ausentes;
+- alunos atrasados;
+- horários de entrada/saída;
+- dados cadastrais;
+- professores;
+- documentos.
+
+> Os números e nomes mostrados no dashboard são fictícios e servem somente para demonstrar o layout.

@@ -1,0 +1,995 @@
+
+/* =========================================================
+   IMPORTAÇÃO DA FONTE
+   ========================================================= */
+
+/* Importa a fonte Inter do Google Fonts para usar no sistema */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   VARIÁVEIS GLOBAIS
+   ========================================================= */
+
+/*
+   Aqui ficam as principais cores e configurações visuais
+   utilizadas em várias partes do sistema.
+
+   Dessa forma, se precisarmos mudar uma cor no futuro,
+   podemos alterar apenas aqui.
+*/
+:root {
+  --primary: #315efb;       /* Cor principal do sistema */
+  --primary-dark: #244bd0;  /* Cor principal ao passar o mouse */
+  --bg: #f5f7fb;             /* Cor de fundo das páginas */
+  --card: #ffffff;           /* Fundo dos cartões */
+  --text: #172033;           /* Cor principal dos textos */
+  --muted: #718096;          /* Textos secundários */
+  --border: #e5e9f2;         /* Bordas */
+  --success: #138a55;        /* Mensagens/status positivos */
+  --danger: #c83c4b;         /* Mensagens/status de erro */
+  --warning: #b77700;        /* Alertas e atrasos */
+
+  /* Sombra padrão dos cartões */
+  --shadow: 0 20px 60px rgba(30, 48, 90, .10);
+}
+
+
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+/* Remove margens e espaçamentos padrão do navegador */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Configuração geral do corpo da página */
+body {
+  font-family: Inter, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Faz botões e campos utilizarem a mesma fonte do sistema */
+button,
+input {
+  font: inherit;
+}
+
+/* Remove o sublinhado padrão dos links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   PÁGINA DE LOGIN DO ALUNO
+   ========================================================= */
+
+/* 
+   Organiza a tela de login no centro da página.
+   Também cria um fundo com um efeito suave de iluminação.
+*/
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 30px;
+
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      #e7edff 0,
+      transparent 35%
+    ),
+    var(--bg);
+}
+
+
+/* 
+   Divide a tela de login em duas colunas:
+   - Identidade/descrição do sistema
+   - Formulário de acesso
+*/
+.login-container {
+  width: min(980px, 100%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+
+/* =========================================================
+   IDENTIDADE DO SISTEMA
+   ========================================================= */
+
+.login-brand {
+  padding: 20px;
+}
+
+/* Logo/abreviação "GA" do sistema */
+.brand-mark {
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
+
+  display: grid;
+  place-items: center;
+
+  background: var(--primary);
+  color: white;
+
+  font-weight: 800;
+  font-size: 20px;
+
+  margin-bottom: 28px;
+
+  box-shadow: 0 12px 30px rgba(49, 94, 251, .25);
+}
+
+
+/* Texto pequeno "SISTEMA ESCOLAR" */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+
+/* Título principal da tela de login */
+.login-brand h1 {
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -.04em;
+  margin-bottom: 20px;
+}
+
+
+/* Texto descritivo abaixo do título */
+.login-brand > p:last-child {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 420px;
+}
+
+
+/* =========================================================
+   CARTÃO DE LOGIN
+   ========================================================= */
+
+/* 
+   Caixa branca onde ficam os campos de RA,
+   senha e código do QR Code.
+*/
+.login-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: var(--shadow);
+}
+
+
+/* Cabeçalho do cartão de login */
+.card-head {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+
+/* Ícone de cadeado */
+.mini-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+
+  background: #eef2ff;
+
+  display: grid;
+  place-items: center;
+}
+
+
+/* Título e subtítulo do cartão */
+.card-head h2 {
+  font-size: 23px;
+}
+
+.card-head p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+
+/* =========================================================
+   CAMPOS DO FORMULÁRIO
+   ========================================================= */
+
+/* Estilo das etiquetas dos campos */
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 17px 0 8px;
+}
+
+
+/* 
+   Estilo padrão dos campos de entrada:
+   RA, senha e código do QR Code.
+*/
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: #fbfcfe;
+  border-radius: 11px;
+  padding: 13px 14px;
+
+  /* Remove a borda padrão ao clicar */
+  outline: none;
+
+  /* Animação suave nas mudanças */
+  transition: .2s;
+}
+
+
+/* 
+   Aparência do campo quando o usuário está digitando.
+*/
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(49, 94, 251, .08);
+  background: white;
+}
+
+
+/* =========================================================
+   BOTÃO DE REGISTRAR ACESSO
+   ========================================================= */
+
+.primary-btn {
+  width: 100%;
+  border: 0;
+  border-radius: 11px;
+  padding: 14px;
+
+  background: var(--primary);
+  color: white;
+
+  font-weight: 700;
+  cursor: pointer;
+
+  margin-top: 24px;
+
+  /* Animação utilizada no hover */
+  transition: .2s;
+}
+
+
+/* Efeito visual quando o mouse passa pelo botão */
+.primary-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+
+/* Posiciona a seta no lado direito do botão */
+.primary-btn span {
+  float: right;
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   MENSAGENS DO FORMULÁRIO
+   ========================================================= */
+
+/* 
+   Área onde o JavaScript pode mostrar mensagens,
+   como "Acesso realizado" ou "Senha incorreta".
+*/
+.form-message {
+  min-height: 20px;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+
+/* Mensagem de sucesso */
+.form-message.success {
+  color: var(--success);
+}
+
+
+/* Mensagem de erro */
+.form-message.error {
+  color: var(--danger);
+}
+
+
+/* =========================================================
+   LINK DA SECRETARIA
+   ========================================================= */
+
+/* Área inferior que direciona para o painel administrativo */
+.secretary-link {
+  border-top: 1px solid var(--border);
+  margin-top: 25px;
+  padding-top: 20px;
+
+  text-align: center;
+
+  font-size: 12px;
+  color: var(--muted);
+}
+
+
+/* Link para o painel da secretaria */
+.secretary-link a {
+  color: var(--primary);
+  font-weight: 700;
+  display: block;
+  margin-top: 6px;
+}
+
+
+/* =========================================================
+   ESTRUTURA PRINCIPAL DO PAINEL
+   ========================================================= */
+
+/*
+   .app é utilizado nas páginas internas do sistema,
+   como dashboard, alunos, frequência etc.
+*/
+.app {
+  min-height: 100vh;
+  display: flex;
+}
+
+
+/* =========================================================
+   MENU LATERAL / SIDEBAR
+   ========================================================= */
+
+/*
+   Menu fixo localizado no lado esquerdo do painel.
+*/
+.sidebar {
+  width: 245px;
+
+  background: #fff;
+
+  border-right: 1px solid var(--border);
+
+  padding: 25px 16px;
+
+  position: fixed;
+
+  /* Faz o menu ocupar toda a altura da tela */
+  inset: 0 auto 0 0;
+}
+
+
+/* Logo e nome do sistema dentro do menu */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 5px 10px 30px;
+
+  font-weight: 800;
+}
+
+
+/* Versão menor da logo dentro da sidebar */
+.sidebar-brand .brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  margin: 0;
+  font-size: 13px;
+}
+
+
+/* Título das categorias do menu */
+.nav-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #9aa5b5;
+  font-weight: 700;
+
+  padding: 0 11px 10px;
+}
+
+
+/* Links de navegação da sidebar */
+.nav-link {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  padding: 12px 11px;
+
+  border-radius: 10px;
+  margin-bottom: 4px;
+
+  color: #647084;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* 
+   Efeito quando o usuário passa o mouse
+   ou quando a página atual está selecionada.
+*/
+.nav-link:hover,
+.nav-link.active {
+  background: #eef2ff;
+  color: var(--primary);
+}
+
+
+/* Posiciona os itens inferiores da sidebar */
+.sidebar-bottom {
+  position: absolute;
+  bottom: 22px;
+  left: 16px;
+  right: 16px;
+}
+
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================= */
+
+/*
+   Área onde ficam os conteúdos das páginas
+   depois da barra lateral.
+*/
+.main {
+  margin-left: 245px;
+
+  width: calc(100% - 245px);
+
+  padding: 30px 34px;
+}
+
+
+/* =========================================================
+   BARRA SUPERIOR
+   ========================================================= */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+
+/* Título da página */
+.topbar h1 {
+  font-size: 27px;
+  letter-spacing: -.03em;
+}
+
+
+/* Descrição abaixo do título */
+.topbar p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+
+/* Identificação do usuário logado */
+.user-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #fff;
+
+  padding: 8px 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 30px;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* Círculo com as iniciais do usuário */
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: #dfe6ff;
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   CARDS DE ESTATÍSTICAS
+   ========================================================= */
+
+/*
+   Organiza os quatro indicadores principais
+   do dashboard.
+*/
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+
+/* Card individual de estatística */
+.stat-card {
+  background: #fff;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  padding: 20px;
+}
+
+
+/* Ícone da estatística */
+.stat-card .icon {
+  font-size: 18px;
+  margin-bottom: 17px;
+}
+
+
+/* Número principal da estatística */
+.stat-card .number {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -.03em;
+}
+
+
+/* Nome/descrição da estatística */
+.stat-card .label {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+
+/* Indicador de tendência */
+.stat-card .trend {
+  font-size: 10px;
+  margin-top: 12px;
+
+  color: var(--success);
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   GRIDS E PAINÉIS
+   ========================================================= */
+
+/* 
+   Divide o conteúdo do dashboard em duas áreas.
+   A primeira fica um pouco maior que a segunda.
+*/
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+
+  gap: 20px;
+}
+
+
+/* Cartão/painel utilizado nas páginas internas */
+.panel {
+  background: #fff;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  padding: 22px;
+
+  margin-bottom: 20px;
+}
+
+
+/* Cabeçalho dos painéis */
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+
+/* Título do painel */
+.panel-head h2 {
+  font-size: 16px;
+}
+
+
+/* Descrição do painel */
+.panel-head p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   TABELAS
+   ========================================================= */
+
+/* 
+   Permite que a tabela tenha rolagem horizontal
+   caso ela fique maior que a tela.
+*/
+.table-wrap {
+  overflow: auto;
+}
+
+
+/* Estrutura geral da tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+
+/* Cabeçalho da tabela */
+th {
+  color: #8994a5;
+
+  text-align: left;
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: .05em;
+
+  padding: 11px 8px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+
+/* Células da tabela */
+td {
+  padding: 13px 8px;
+
+  border-bottom: 1px solid #f0f2f6;
+
+  /* Impede que o texto quebre em várias linhas */
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   STATUS DOS ALUNOS
+   ========================================================= */
+
+/* Estilo geral dos status */
+.status {
+  display: inline-flex;
+
+  padding: 5px 8px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+
+/* Aluno presente */
+.status.present {
+  background: #e8f8f0;
+  color: var(--success);
+}
+
+
+/* Aluno atrasado */
+.status.late {
+  background: #fff4dc;
+  color: var(--warning);
+}
+
+
+/* Aluno ausente */
+.status.absent {
+  background: #ffeaed;
+  color: var(--danger);
+}
+
+
+/* =========================================================
+   CAMPO DE PESQUISA
+   ========================================================= */
+
+/* Campo de busca utilizado para pesquisar alunos */
+.search {
+  max-width: 230px;
+
+  padding: 10px 12px;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   ATIVIDADES RECENTES
+   ========================================================= */
+
+/* Cada item da lista de atividades */
+.activity {
+  display: flex;
+
+  gap: 12px;
+
+  padding: 13px 0;
+
+  border-bottom: 1px solid #f0f2f6;
+}
+
+
+/* Remove a linha do último item */
+.activity:last-child {
+  border-bottom: 0;
+}
+
+
+/* Pequena bolinha que representa uma atividade */
+.activity-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  margin-top: 5px;
+
+  /* Impede que a bolinha seja redimensionada */
+  flex: none;
+}
+
+
+/* Texto principal da atividade */
+.activity strong {
+  display: block;
+  font-size: 12px;
+}
+
+
+/* Horário ou informação secundária da atividade */
+.activity span {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+  margin-top: 3px;
+}
+
+
+/* =========================================================
+   AÇÕES RÁPIDAS
+   ========================================================= */
+
+/* Organiza os botões de ações rápidas em duas colunas */
+.quick-actions {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 10px;
+}
+
+
+/* Botão individual de ação */
+.action {
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  background: #fbfcfe;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+
+/* Efeito ao passar o mouse sobre uma ação */
+.action:hover {
+  border-color: #bdc9f7;
+  background: #f6f8ff;
+}
+
+
+/* Nome da ação */
+.action strong {
+  display: block;
+
+  font-size: 11px;
+
+  margin-top: 8px;
+}
+
+
+/* Descrição da ação */
+.action span {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - TABLETS E TELAS MENORES
+   ========================================================= */
+
+/*
+   Quando a tela tiver até 900px:
+   - A sidebar fica menor
+   - Os textos do menu desaparecem
+   - Os cards de estatística ficam em duas colunas
+   - O conteúdo principal ocupa mais espaço
+*/
+@media (max-width: 900px) {
+
+  /* Sidebar compacta */
+  .sidebar {
+    width: 70px;
+    padding: 18px 10px;
+  }
+
+  /* Esconde os textos da sidebar */
+  .sidebar-brand span,
+  .nav-link span,
+  .nav-label,
+  .sidebar-bottom .nav-link span {
+    display: none;
+  }
+
+  /* Centraliza a logo */
+  .sidebar-brand {
+    justify-content: center;
+    padding-bottom: 25px;
+  }
+
+  /* Centraliza os ícones do menu */
+  .nav-link {
+    justify-content: center;
+  }
+
+  /* Ajusta o conteúdo principal */
+  .main {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+    padding: 24px;
+  }
+
+  /* Estatísticas passam para duas colunas */
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Os painéis passam a ocupar uma única coluna */
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - CELULARES
+   ========================================================= */
+
+/*
+   Quando a tela tiver até 650px:
+   - A tela de login passa para uma coluna
+   - Os textos ficam menores
+   - O conteúdo do dashboard se adapta ao celular
+*/
+@media (max-width: 650px) {
+
+  /* Login passa a utilizar apenas uma coluna */
+  .login-container {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+    max-width: 470px;
+  }
+
+  /* Centraliza a apresentação do sistema */
+  .login-brand {
+    text-align: center;
+    padding: 5px;
+  }
+
+  /* Centraliza a logo */
+  .brand-mark {
+    margin: 0 auto 18px;
+  }
+
+  /* Reduz o tamanho do título no celular */
+  .login-brand h1 {
+    font-size: 37px;
+  }
+
+  /* Reduz o espaçamento interno do cartão */
+  .login-card {
+    padding: 25px;
+  }
+
+  /* Alinha a barra superior no início */
+  .topbar {
+    align-items: flex-start;
+  }
+
+  /* Reduz o título da página */
+  .topbar h1 {
+    font-size: 22px;
+  }
+
+  /* Esconde a identificação do usuário em telas pequenas */
+  .user-pill {
+    display: none;
+  }
+
+  /* Mantém duas colunas para as estatísticas */
+  .stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  /* Reduz o tamanho dos cards */
+  .stat-card {
+    padding: 15px;
+  }
+
+  /* Reduz o tamanho dos números */
+  .stat-card .number {
+    font-size: 23px;
+  }
+
+  /* Reduz o espaçamento lateral do conteúdo */
+  .main {
+    padding: 18px 14px;
+  }
+}
