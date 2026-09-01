@@ -1,0 +1,584 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Gerenciamento de Alunos</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+
+<body>
+
+  <!--
+    Container principal do sistema.
+
+    Divide a página em:
+    1. Menu lateral (sidebar)
+    2. Área principal do dashboard
+  -->
+  <div class="app">
+
+
+    <!-- =====================================================
+         MENU LATERAL
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+      <!-- Logo e nome do sistema -->
+      <div class="sidebar-brand">
+
+        <!-- Abreviação "GA" = Gerenciamento de Alunos -->
+        <div class="brand-mark">GA</div>
+
+        <span>Gerenciamento</span>
+
+      </div>
+
+
+      <!-- Categoria principal do menu -->
+      <div class="nav-label">Principal</div>
+
+
+      <!--
+        Link para o dashboard.
+        A classe "active" indica que esta é
+        a página atualmente selecionada.
+      -->
+      <a class="nav-link active" href="dashboard.html">
+        📊 <span>Dashboard</span>
+      </a>
+
+
+      <!-- Área destinada aos alunos -->
+      <a class="nav-link" href="#alunos">
+        👥 <span>Alunos</span>
+      </a>
+
+
+      <!-- Área destinada ao controle de frequência -->
+      <a class="nav-link" href="#frequencia">
+        🕒 <span>Frequência</span>
+      </a>
+
+
+      <!-- Área destinada ao gerenciamento dos professores -->
+      <a class="nav-link" href="#professores">
+        🎓 <span>Professores</span>
+      </a>
+
+
+      <!-- Categoria de configurações e recursos do sistema -->
+      <div class="nav-label" style="margin-top:22px;">
+        Sistema
+      </div>
+
+
+      <!-- Área de documentos -->
+      <a class="nav-link" href="#documentos">
+        📁 <span>Documentos</span>
+      </a>
+
+
+      <!-- Área de configurações -->
+      <a class="nav-link" href="#config">
+        ⚙️ <span>Configurações</span>
+      </a>
+
+
+      <!--
+        Área inferior do menu.
+
+        O link "Sair" retorna para a tela
+        inicial de acesso dos alunos.
+      -->
+      <div class="sidebar-bottom">
+
+        <a class="nav-link" href="../index.html">
+          ↪ <span>Sair</span>
+        </a>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+         ===================================================== -->
+
+    <main class="main">
+
+
+      <!-- ===================================================
+           CABEÇALHO DO DASHBOARD
+           =================================================== -->
+
+      <header class="topbar">
+
+        <div>
+
+          <!-- Saudação para o usuário da secretaria -->
+          <h1>Olá, Secretaria 👋</h1>
+
+          <!-- Descrição do dashboard -->
+          <p>
+            Acompanhe a movimentação dos alunos hoje.
+          </p>
+
+        </div>
+
+
+        <!--
+          Identificação do usuário atualmente conectado.
+
+          A letra "S" representa Secretaria.
+        -->
+        <div class="user-pill">
+
+          <div class="avatar">S</div>
+
+          Secretaria
+
+        </div>
+
+      </header>
+
+
+      <!-- ===================================================
+           CARDS DE ESTATÍSTICAS
+           =================================================== -->
+
+      <!--
+        Exibe os principais números do dia:
+
+        - Total de alunos
+        - Presentes
+        - Atrasados
+        - Ausentes
+
+        Os valores atualmente são apenas exemplos.
+        Futuramente deverão vir do banco de dados.
+      -->
+      <section class="stats">
+
+
+        <!-- Total de alunos cadastrados -->
+        <article class="stat-card">
+
+          <div class="icon">👥</div>
+
+          <!--
+            ID "total" permite que o JavaScript
+            altere esse número automaticamente.
+          -->
+          <div class="number" id="total">428</div>
+
+          <div class="label">
+            Total de alunos
+          </div>
+
+          <div class="trend">
+            ● Atualizado agora
+          </div>
+
+        </article>
+
+
+        <!-- Quantidade de alunos presentes -->
+        <article class="stat-card">
+
+          <div class="icon">✓</div>
+
+          <div class="number" id="presentes">
+            371
+          </div>
+
+          <div class="label">
+            Presentes hoje
+          </div>
+
+          <div class="trend">
+            87% de presença
+          </div>
+
+        </article>
+
+
+        <!-- Quantidade de alunos atrasados -->
+        <article class="stat-card">
+
+          <div class="icon">⏰</div>
+
+          <div class="number" id="atrasados">
+            24
+          </div>
+
+          <div class="label">
+            Atrasados
+          </div>
+
+          <!--
+            O estilo é alterado diretamente aqui
+            para utilizar a cor de alerta.
+          -->
+          <div class="trend" style="color:var(--warning)">
+            Atenção necessária
+          </div>
+
+        </article>
+
+
+        <!-- Quantidade de alunos ausentes -->
+        <article class="stat-card">
+
+          <div class="icon">!</div>
+
+          <div class="number" id="faltas">
+            33
+          </div>
+
+          <div class="label">
+            Ausentes
+          </div>
+
+          <!-- Indicador de faltas -->
+          <div class="trend" style="color:var(--danger)">
+            7,7% do total
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- ===================================================
+           PRIMEIRA LINHA DE PAINÉIS
+           =================================================== -->
+
+      <div class="grid-2">
+
+
+        <!-- ================================================
+             MOVIMENTAÇÃO DOS ALUNOS
+             ================================================ -->
+
+        <section class="panel" id="alunos">
+
+          <!-- Cabeçalho da seção -->
+          <div class="panel-head">
+
+            <div>
+
+              <h2>Movimentação de alunos</h2>
+
+              <p>
+                Registros de entrada e saída de hoje
+              </p>
+
+            </div>
+
+
+            <!--
+              Campo de pesquisa.
+
+              O JavaScript pode utilizar o ID "search"
+              para filtrar os alunos da tabela.
+            -->
+            <input
+              class="search"
+              id="search"
+              type="search"
+              placeholder="Buscar aluno..."
+            >
+
+          </div>
+
+
+          <!--
+            Container da tabela.
+
+            O CSS permite rolagem horizontal
+            quando a tela for pequena.
+          -->
+          <div class="table-wrap">
+
+            <table>
+
+              <!-- Cabeçalho da tabela -->
+              <thead>
+
+                <tr>
+                  <th>Aluno</th>
+                  <th>RA</th>
+                  <th>Entrada</th>
+                  <th>Status</th>
+                </tr>
+
+              </thead>
+
+
+              <!--
+                Corpo da tabela.
+
+                O JavaScript "dashboard.js" será responsável
+                por inserir os alunos aqui.
+
+                Futuramente, esses dados poderão
+                ser recebidos do banco de dados.
+              -->
+              <tbody id="studentTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================================================
+             ÚLTIMAS ATIVIDADES
+             ================================================ -->
+
+        <section class="panel" id="frequencia">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>Últimas atividades</h2>
+
+              <p>
+                Registros em tempo real
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!--
+            Área onde o JavaScript irá inserir
+            as atividades recentes.
+
+            Exemplos:
+            - João registrou entrada
+            - Maria chegou atrasada
+            - Pedro registrou saída
+          -->
+          <div id="activities"></div>
+
+        </section>
+
+      </div>
+
+
+      <!-- ===================================================
+           SEGUNDA LINHA DE PAINÉIS
+           =================================================== -->
+
+      <div class="grid-2">
+
+
+        <!-- ================================================
+             AÇÕES RÁPIDAS
+             ================================================ -->
+
+        <section class="panel" id="professores">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>Ações rápidas</h2>
+
+              <p>
+                Atalhos para a secretaria
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!--
+            Botões de acesso rápido para funções
+            utilizadas pela secretaria.
+          -->
+          <div class="quick-actions">
+
+
+            <!-- Cadastrar novo aluno -->
+            <button
+              class="action"
+              onclick="alert('Tela de cadastro será conectada ao banco.')"
+            >
+              ➕
+
+              <strong>Novo aluno</strong>
+
+              <span>
+                Cadastrar estudante
+              </span>
+            </button>
+
+
+            <!-- Acessar relatório diário -->
+            <button
+              class="action"
+              onclick="alert('Relatório preparado para integração.')"
+            >
+              📄
+
+              <strong>Relatório diário</strong>
+
+              <span>
+                Ver frequência
+              </span>
+            </button>
+
+
+            <!-- Consultar documentos -->
+            <button
+              class="action"
+              onclick="alert('Consulta de documentos.')"
+            >
+              📁
+
+              <strong>Documentos</strong>
+
+              <span>
+                Dados dos alunos
+              </span>
+            </button>
+
+
+            <!-- Área dos professores -->
+            <button
+              class="action"
+              onclick="alert('Área de professores.')"
+            >
+              🎓
+
+              <strong>Professores</strong>
+
+              <span>
+                Gerenciar equipe
+              </span>
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================================================
+             RESUMO DA FREQUÊNCIA
+             ================================================ -->
+
+        <section class="panel" id="documentos">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>Resumo do dia</h2>
+
+              <p>
+                Visão geral da frequência
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- Conteúdo do resumo -->
+          <div style="padding:10px 0">
+
+
+            <!-- Porcentagem de presença -->
+            <div
+              style="
+                display:flex;
+                justify-content:space-between;
+                font-size:12px;
+                margin-bottom:8px
+              "
+            >
+
+              <span>Presença</span>
+
+              <strong>87%</strong>
+
+            </div>
+
+
+            <!--
+              Barra visual que representa
+              a porcentagem de presença.
+            -->
+            <div
+              style="
+                height:10px;
+                background:#edf0f5;
+                border-radius:20px;
+                overflow:hidden
+              "
+            >
+
+              <!--
+                A largura de 87% representa
+                a porcentagem de presença atual.
+              -->
+              <div
+                style="
+                  width:87%;
+                  height:100%;
+                  background:var(--primary);
+                  border-radius:20px
+                "
+              ></div>
+
+            </div>
+
+
+            <!-- Resumo numérico da frequência -->
+            <div
+              style="
+                display:flex;
+                gap:18px;
+                margin-top:15px;
+                font-size:10px;
+                color:var(--muted)
+              "
+            >
+
+              <span>● 371 presentes</span>
+
+              <span>● 24 atrasados</span>
+
+              <span>● 33 faltas</span>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="../js/dashboard.js"></script>
+
+</body>
+</html>
+```
