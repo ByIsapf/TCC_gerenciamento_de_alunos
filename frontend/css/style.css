@@ -1,0 +1,394 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #020b18, #0d47a1, #1976d2);
+    color: #111;
+}
+
+
+/* CONTAINER PRINCIPAL*/
+
+main {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+/*SEÇÃO GEA*/
+
+main > section:first-child {
+    width: 420px;
+    min-height: 680px;
+
+    background: linear-gradient(160deg, #0b3d91, #1976d2);
+
+    border-radius: 22px 0 0 22px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+/*LOGO*/
+
+.gea {
+    font-size: 100px;
+    font-weight: 900;
+    letter-spacing: 6px;
+
+    color: #ffffff;
+
+    margin-bottom: 18px;
+
+    text-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.school {
+    font-size: 18px;
+    font-weight: bold;
+
+    text-align: center;
+
+    color: #eaf3ff;
+
+    padding: 0 40px;
+}
+
+
+/*SEÇÃO LOGIN*/
+
+main > section:last-child {
+    width: 500px;
+    min-height: 680px;
+
+    background-color: #ffffff;
+
+    padding: 65px 55px;
+
+    border-radius: 0 22px 22px 0;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+/*TÍTULO*/
+
+h1 {
+    text-align: center;
+
+    color: #0d47a1;
+
+    font-size: 32px;
+
+    margin-bottom: 55px;
+}
+
+
+/* FORMULÁRIO*/
+
+#formstudent {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+
+    color: #111111;
+
+    margin-bottom: 8px;
+}
+
+
+/* NOVO ESTILO DOS INPUTS*/
+
+input {
+    width: 100%;
+    height: 54px;
+
+    padding: 0 18px;
+
+    margin-bottom: 55px;
+
+    border: none;
+    border-bottom: 2px solid #cfd8e3;
+
+    border-radius: 6px 6px 0 0;
+
+    background-color: #f4f7fb;
+
+    font-size: 15px;
+
+    color: #111;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+input::placeholder {
+    color: #8a94a3;
+}
+
+input:hover {
+    background-color: #eef3f9;
+}
+
+input:focus {
+    border-bottom: 2px solid #1976d2;
+
+    background-color: #eef5ff;
+
+    box-shadow: 0 4px 0 rgba(25, 118, 210, 0.08);
+}
+
+
+/* BOTÃO*/
+
+.intial-button {
+    width: 100%;
+    height: 54px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: linear-gradient(
+        135deg,
+        #0d47a1,
+        #1976d2
+    );
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.intial-button:hover {
+    transform: translateY(-2px);
+
+    background: linear-gradient(
+        135deg,
+        #083b8c,
+        #1565c0
+    );
+
+    box-shadow: 0 8px 20px rgba(13, 71, 161, 0.3);
+}
+
+.intial-button:active {
+    transform: translateY(0);
+}
+
+
+/*ACESSO ADMINISTRATIVO*/
+
+.link-adm {
+    text-align: center;
+
+    margin-top: 50px;
+}
+
+.link-adm a {
+    color: #0d47a1;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.link-adm a:hover {
+    color: #1976d2;
+
+    text-decoration: underline;
+}
+
+/*ANIMAÇÃO DOS SECTIONS*/
+
+main > section:first-child {
+    animation: entrarEsquerda 0.8s ease-out;
+}
+
+main > section:last-child {
+    animation: entrarDireita 0.8s ease-out;
+}
+
+
+/* Animação do primeiro section */
+
+@keyframes entrarEsquerda {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Animação do segundo section */
+
+@keyframes entrarDireita {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* EFEITOS*/
+
+#background-effects {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+/* Bolinhas */
+
+.particle {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    opacity: 0.5;
+
+    box-shadow: 0 0 10px #ffffff;
+
+    animation: flutuar linear infinite;
+}
+
+
+/* Movimento das partículas */
+
+@keyframes flutuar {
+
+    0% {
+        transform: translateY(110vh) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(50vh) translateX(40px);
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-10vh) translateX(-40px);
+        opacity: 0;
+    }
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 950px) {
+
+    main {
+        flex-direction: column;
+    }
+
+    main > section:first-child {
+        width: 100%;
+        max-width: 500px;
+
+        min-height: 280px;
+
+        border-radius: 22px 22px 0 0;
+    }
+
+    main > section:last-child {
+        width: 100%;
+        max-width: 500px;
+
+        min-height: auto;
+
+        border-radius: 0 0 22px 22px;
+    }
+
+    .gea {
+        font-size: 75px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+
+    main {
+        padding: 15px;
+    }
+
+    main > section:first-child {
+        min-height: 220px;
+    }
+
+    main > section:last-child {
+        padding: 40px 25px;
+    }
+
+    .gea {
+        font-size: 60px;
+    }
+
+    .school {
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .link-adm {
+        margin-top: 40px;
+    }
+}
