@@ -1,4 +1,3 @@
-
 /* =========================
    RESET
 ========================= */
@@ -12,7 +11,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f4f7fb;
-    color: #172033;
+    color: #111;
 }
 
 /* =========================
@@ -32,19 +31,19 @@ aside {
     position: fixed;
     top: 0;
     left: 0;
-
     width: 250px;
     height: 100vh;
 
-    background: #101827;
-    color: white;
+    /* Cores do CSS 1 */
+    background: linear-gradient(160deg, #020b18, #0d47a1, #1976d2);
 
+    color: white;
     display: flex;
     flex-direction: column;
-
     padding: 25px 18px;
-
     z-index: 100;
+
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.20);
 }
 
 /* LOGO */
@@ -59,13 +58,14 @@ aside {
     font-weight: bold;
     letter-spacing: 3px;
     color: #ffffff;
+
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .logo span {
     display: block;
     margin-top: 7px;
-
-    color: #9ca8ba;
+    color: #eaf3ff;
     font-size: 12px;
 }
 
@@ -81,26 +81,25 @@ aside {
 
 .menu a {
     text-decoration: none;
-    color: #b8c1d1;
-
+    color: #eaf3ff;
     padding: 14px 16px;
-
     border-radius: 9px;
-
     font-size: 15px;
     font-weight: 500;
-
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .menu a:hover {
-    background: #1c2940;
+    background: rgba(255, 255, 255, 0.15);
     color: white;
+    transform: translateX(3px);
 }
 
 .menu a.dash-menu {
-    background: #2563eb;
-    color: white;
+    background: #ffffff;
+    color: #0d47a1;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* =========================
@@ -113,26 +112,22 @@ aside {
 
 .exit-menu {
     display: block;
-
     text-align: center;
-
     padding: 12px;
-
     border-radius: 8px;
 
-    background: #1c2940;
+    background: rgba(255, 255, 255, 0.12);
+    color: #eaf3ff;
 
-    color: #d1d8e3;
     text-decoration: none;
-
     font-size: 14px;
-
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .exit-menu:hover {
     background: #dc2626;
     color: white;
+    transform: translateY(-2px);
 }
 
 /* =========================
@@ -142,10 +137,11 @@ aside {
 .content {
     width: calc(100% - 250px);
     min-height: 100vh;
-
     margin-left: 250px;
-
     padding: 25px 35px;
+
+    /* Fundo inspirado no CSS 1 */
+    background: #f4f7fb;
 }
 
 /* =========================
@@ -154,18 +150,15 @@ aside {
 
 .top {
     width: 100%;
-
     display: flex;
     align-items: center;
-
     padding: 5px 0 25px;
-
-    border-bottom: 1px solid #e4e8ef;
+    border-bottom: 1px solid #cfd8e3;
 }
 
 .top h1 {
     font-size: 28px;
-    color: #172033;
+    color: #0d47a1;
 }
 
 /* =========================
@@ -174,28 +167,24 @@ aside {
 
 .noti {
     margin-left: auto;
-
     position: relative;
 }
 
 .notification-button {
     position: relative;
-
     width: 45px;
     height: 45px;
-
     border: none;
     border-radius: 50%;
 
     background: white;
 
     cursor: pointer;
-
     font-size: 20px;
 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.12);
 
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 /* ÍCONE DO SINO */
@@ -206,20 +195,19 @@ aside {
 
 .notification-button:hover {
     transform: translateY(-2px);
-    background: #eef4ff;
+    background: #eef5ff;
+    box-shadow: 0 7px 20px rgba(13, 71, 161, 0.18);
 }
 
 /* CONTADOR */
 
 .notification-count {
     position: absolute;
-
     top: -5px;
     right: -5px;
 
     min-width: 19px;
     height: 19px;
-
     padding: 2px 5px;
 
     display: flex;
@@ -241,23 +229,19 @@ aside {
 
 .user-info {
     margin-left: 22px;
-
     display: flex;
     align-items: center;
 }
 
 .user-info strong {
     display: block;
-
     font-size: 14px;
-    color: #172033;
+    color: #0d47a1;
 }
 
 .user-info small {
     display: block;
-
     margin-top: 3px;
-
     font-size: 12px;
     color: #718096;
 }
@@ -275,7 +259,6 @@ aside {
     .content {
         width: calc(100% - 210px);
         margin-left: 210px;
-
         padding: 20px;
     }
 
@@ -292,7 +275,6 @@ aside {
 
     aside {
         position: relative;
-
         width: 100%;
         height: auto;
     }
@@ -304,7 +286,6 @@ aside {
     .content {
         width: 100%;
         margin-left: 0;
-
         padding: 20px;
     }
 
@@ -326,4 +307,3 @@ aside {
         font-size: 23px;
     }
 }
-

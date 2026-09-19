@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #111;
+}
+
+.turmas {
+    min-height: 100vh;
+    display: flex;
+}
+
+aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+
+    /* Cores do CSS 1 */
+    background: linear-gradient(160deg, #020b18, #0d47a1, #1976d2);
+
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 18px;
+    z-index: 100;
+
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.20);
+}
+
+.logo {
+    text-align: center;
+    padding: 10px 0 35px;
+}
+
+.gea {
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #ffffff;
+
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.logo span {
+    display: block;
+    margin-top: 7px;
+    color: #eaf3ff;
+    font-size: 12px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #eaf3ff;
+    padding: 14px 16px;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    transform: translateX(3px);
+}
+
+.menu a.class-menu {
+    background: #ffffff;
+    color: #0d47a1;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.button-exit {
+    margin-top: auto;
+}
+
+.exit-menu {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.12);
+    color: #eaf3ff;
+
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.exit-menu:hover {
+    background: #dc2626;
+    color: white;
+    transform: translateY(-2px);
+}
