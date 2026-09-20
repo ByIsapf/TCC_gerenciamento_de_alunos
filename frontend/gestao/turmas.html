@@ -7,41 +7,90 @@
     <link rel="stylesheet" href="../css/turmas.css">
 </head>
 <body>
-    
-<div class="turmas">
 
-<aside>
+    <div class="turmas">
 
-<div class="logo">
-    <div class="gea">G.E.A</div>
-    <span>Pedro Casemiro Leite</span>
-</div>
+        <!-- MENU LATERAL -->
+        <aside>
 
-<nav class="menu">
+            <!-- LOGO -->
+            <div class="logo">
+                <div class="gea">G.E.A</div>
+                <span>Pedro Casemiro Leite</span>
+            </div>
 
-<a href="dashboard.html" class="dash-menu">
-    Dashboard
-</a>
+            <!-- MENU -->
+            <nav class="menu">
 
-<a href="turmas.html" class="class-menu">
-    Turmas
-</a>
+                <a href="dashboard.html" class="dash-menu">
+                    Dashboard</a>
 
-<a href="configuracoes.html" class="config-menu">
-    Configurações
-</a>
+                <a href="turmas.html" class="class-menu">
+                    Turmas</a>
 
-</nav>
+                <a href="configuracoes.html" class="config-menu">
+                    Configurações</a>
 
-<div class="button-exit">
+            </nav>
 
-<a href="gestao-login.html" class="exit-menu">
-    Sair
-</a>
+            <!-- BOTÃO SAIR -->
+            <div class="button-exit">
 
-</div>
+                <a href="gestao-login.html" class="exit-menu">
+                    Sair</a>
 
-</aside>
+            </div>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+<main>
+
+    <!-- TÍTULO -->
+    <section class="page-title">
+        <h1>Turmas</h1>
+      
+    </section>
+
+    <!-- SELEÇÃO DA TURMA -->
+    <div class="select-container">
+
+        <select id="selectTurma">
+            <option value="" disabled selected>
+                Selecione uma turma</option>
+
+            <option value="1A">1A</option>
+            <option value="1B">1B</option>
+            <option value="1C">1C</option>
+            <option value="1D">1D</option>
+
+            <option value="2A">2A</option>
+            <option value="2B">2B</option>
+            <option value="2C">2C</option>
+            <option value="2D">2D</option>
+
+            <option value="3A">3A</option>
+            <option value="3B">3B</option>
+            <option value="3C">3C</option>
+            <option value="3D">3D</option>
+        </select>
+
+    </div>
+
+    <!-- LISTA DE ALUNOS -->
+    <section class="alunos-section" id="alunosSection">
+
+        <div class="alunos-header">
+            <h2 id="tituloTurma">
+                Selecione uma turma</h2>
+
+            <span id="contadorAlunos">
+                0 alunos</span>
+        </div>
+
+    </section>
+
+</main>
 
 </div>
 

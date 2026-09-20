@@ -1,19 +1,44 @@
+/* ========================================
+   RESET
+======================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+/* ========================================
+   BODY
+======================================== */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f7fb;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #020b18,
+        #0d47a1,
+        #1976d2
+    );
     color: #111;
 }
+
+
+/* ========================================
+   ESTRUTURA PRINCIPAL
+======================================== */
 
 .turmas {
     min-height: 100vh;
     display: flex;
 }
+
+
+/* ========================================
+   MENU LATERAL
+======================================== */
 
 aside {
     position: fixed;
@@ -21,22 +46,29 @@ aside {
     left: 0;
     width: 250px;
     height: 100vh;
-
-    /* Cores do CSS 1 */
-    background: linear-gradient(160deg, #020b18, #0d47a1, #1976d2);
+    background: linear-gradient(
+        160deg,
+        #020b18,
+        #0d47a1,
+        #1976d2
+    );
 
     color: white;
     display: flex;
     flex-direction: column;
-    padding: 25px 18px;
+    padding: 25px 16px;
     z-index: 100;
-
-    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.20);
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.25);
 }
+
+
+/* ========================================
+   LOGO
+======================================== */
 
 .logo {
     text-align: center;
-    padding: 10px 0 35px;
+    padding: 10px 0 38px;
 }
 
 .gea {
@@ -44,8 +76,7 @@ aside {
     font-weight: bold;
     letter-spacing: 3px;
     color: #ffffff;
-
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    text-shadow:0 4px 12px rgba(0, 0, 0, 0.30);
 }
 
 .logo span {
@@ -55,6 +86,11 @@ aside {
     font-size: 12px;
 }
 
+
+/* ========================================
+   MENU
+======================================== */
+
 .menu {
     display: flex;
     flex-direction: column;
@@ -62,27 +98,38 @@ aside {
 }
 
 .menu a {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 10px;
     text-decoration: none;
     color: #eaf3ff;
-    padding: 14px 16px;
-    border-radius: 9px;
     font-size: 15px;
     font-weight: 500;
-    transition: 0.3s;
+    transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease;
 }
+
+
+/* HOVER */
 
 .menu a:hover {
     background: rgba(255, 255, 255, 0.15);
-    color: white;
-    transform: translateX(3px);
+    color: #ffffff;
+    transform: translateX(4px);
 }
+
+
+/* ABA ATIVA */
 
 .menu a.class-menu {
     background: #ffffff;
     color: #0d47a1;
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
 }
+
+
+/* ========================================
+   BOTÃO SAIR
+======================================== */
 
 .button-exit {
     margin-top: auto;
@@ -90,20 +137,311 @@ aside {
 
 .exit-menu {
     display: block;
-    text-align: center;
     padding: 12px;
-    border-radius: 8px;
-
+    border-radius: 9px;
     background: rgba(255, 255, 255, 0.12);
     color: #eaf3ff;
-
+    text-align: center;
     text-decoration: none;
     font-size: 14px;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .exit-menu:hover {
     background: #dc2626;
-    color: white;
+    color: #ffffff;
     transform: translateY(-2px);
+}
+
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
+
+main {
+    min-height: 100vh;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    padding: 45px 50px;
+    background: #f4f7fb;
+}
+
+
+/* ========================================
+   TÍTULO
+======================================== */
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    color: #0d47a1;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.page-title p {
+    color: #5f6b7a;
+    font-size: 15px;
+}
+
+
+/* ========================================
+   ÁREA SUPERIOR
+======================================== */
+
+.select-container {
+    width: 100%;
+    max-width: 500px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background: linear-gradient( 135deg, #020b18, #0d47a1);
+    border: 2px solid rgba(25, 118, 210, 0.55);
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(2, 11, 24, 0.20);
+    transition: 0.3s ease;
+}
+
+
+/* AO PASSAR O MOUSE */
+
+.select-container:hover {
+    border-color: #1976d2;
+    box-shadow: 0 10px 25px rgba(13, 71, 161, 0.30);
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   ÍCONE DO SELECT
+======================================== */
+
+.select-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 23px;
+}
+
+
+/* ========================================
+   SELECT
+======================================== */
+
+.select-container select {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    appearance: auto;
+}
+
+/* OPÇÕES */
+
+.select-container select option {
+    background: #020b18;
+    color: #ffffff;
+    padding: 10px;
+}
+
+/* ========================================
+   ÁREA DOS ALUNOS
+======================================== */
+
+.alunos-section {
+    width: 100%;
+    margin-top: 25px;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(13, 71, 161, 0.08);
+    box-shadow: 0 8px 25px rgba(2, 11, 24, 0.08);
+    transition: 0.3s ease;
+}
+
+
+/* ========================================
+   CABEÇALHO DOS ALUNOS
+======================================== */
+
+.alunos-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #e8eef6;
+}
+
+.alunos-header h2 {
+    color: #0d47a1;
+    font-size: 22px;
+}
+
+.alunos-header span {
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #e8f1ff;
+    color: #0d47a1;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/* ========================================
+   LISTA DE ALUNOS
+======================================== */
+
+.lista-alunos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* ========================================
+   CARD DO ALUNO
+======================================== */
+
+.aluno-card {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f7faff;
+    border: 1px solid #e2ebf7;
+    border-radius: 12px;
+    transition: 0.25s ease;
+}
+
+
+/* HOVER */
+
+.aluno-card:hover {
+    background: #eef5ff;
+    border-color: #b8d2f5;
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.08);
+}
+
+
+/* ========================================
+   NÚMERO DO ALUNO
+======================================== */
+
+.numero-aluno {
+    width: 40px;
+    color: #1976d2;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* ========================================
+   NOME DO ALUNO
+======================================== */
+
+.nome-aluno {
+    flex: 1;
+    color: #1e293b;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+/* ========================================
+   STATUS
+======================================== */
+
+.status-aluno {
+    min-width: 105px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/* PRESENTE */
+
+.status-presente {
+    background: #e6f7ed;
+    color: #15803d;
+}
+
+/* FALTOU */
+
+.status-faltou {
+    background: #feecec;
+    color: #dc2626;
+}
+
+/* ATRASADO */
+
+.status-atrasado {
+    background: #fff4d6;
+    color: #b7791f;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 900px) {
+    aside {
+        width: 210px;
+    }
+    main {
+        width: calc(100% - 210px);
+        margin-left: 210px;
+        padding: 35px;
+    }
+    .select-container {
+        max-width: 100%;
+    }
+}
+
+
+@media (max-width: 650px) {
+    aside {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+    .turmas {
+        flex-direction: column;
+    }
+    main {
+        width: 100%;
+        margin-left: 0;
+        padding: 25px;
+    }
+    .alunos-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .aluno-card {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .status-aluno {
+        margin-left: auto;
+    }
 }

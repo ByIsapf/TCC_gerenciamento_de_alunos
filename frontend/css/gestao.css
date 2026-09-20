@@ -161,67 +161,7 @@ aside {
     color: #0d47a1;
 }
 
-/* =========================
-   NOTIFICAÇÕES
-========================= */
 
-.noti {
-    margin-left: auto;
-    position: relative;
-}
-
-.notification-button {
-    position: relative;
-    width: 45px;
-    height: 45px;
-    border: none;
-    border-radius: 50%;
-
-    background: white;
-
-    cursor: pointer;
-    font-size: 20px;
-
-    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.12);
-
-    transition: 0.3s;
-}
-
-/* ÍCONE DO SINO */
-
-.notification-button::before {
-    content: "🔔";
-}
-
-.notification-button:hover {
-    transform: translateY(-2px);
-    background: #eef5ff;
-    box-shadow: 0 7px 20px rgba(13, 71, 161, 0.18);
-}
-
-/* CONTADOR */
-
-.notification-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-
-    min-width: 19px;
-    height: 19px;
-    padding: 2px 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #dc2626;
-    color: white;
-
-    font-size: 11px;
-    font-weight: bold;
-}
 
 /* =========================
    USUÁRIO
