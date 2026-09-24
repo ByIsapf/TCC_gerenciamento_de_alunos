@@ -1,88 +1,137 @@
+/* =========================
+   RESET
+   ========================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+/* =========================
+   BODY
+   ========================= */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f4f7fb;
-    color: #111;
+    color: #20384d;
 }
 
-.configuracoes {
+
+/* =========================
+   ESTRUTURA
+   ========================= */
+
+.dashboard {
     min-height: 100vh;
     display: flex;
 }
 
-aside {
+
+/* =========================
+   MENU LATERAL
+   ========================= */
+
+.sidebar {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 250px;
     height: 100vh;
 
-    /* Cores do CSS 1 */
-    background: linear-gradient(160deg, #020b18, #0d47a1, #1976d2);
-
+    background: #1d374c;
     color: white;
+
     display: flex;
     flex-direction: column;
-    padding: 25px 18px;
+
+    padding: 35px 20px;
+
     z-index: 100;
 
-    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.20);
+    box-shadow:
+        8px 0 30px rgba(31, 51, 68, 0.08);
 }
 
+
+/* =========================
+   LOGO
+   ========================= */
+
 .logo {
-    text-align: center;
-    padding: 10px 0 35px;
+    padding: 5px 10px 45px;
 }
 
 .gea {
-    font-size: 34px;
-    font-weight: bold;
-    letter-spacing: 3px;
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 4px;
     color: #ffffff;
-
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .logo span {
     display: block;
-    margin-top: 7px;
-    color: #eaf3ff;
+
+    margin-top: 8px;
+
+    color: #dce7ef;
+
     font-size: 12px;
 }
+
+
+/* =========================
+   MENU
+   ========================= */
 
 .menu {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
 }
 
 .menu a {
-    text-decoration: none;
-    color: #eaf3ff;
-    padding: 14px 16px;
+    display: block;
+
+    padding: 13px 15px;
+
     border-radius: 9px;
-    font-size: 15px;
-    font-weight: 500;
-    transition: 0.3s;
+
+    color: #dce7ef;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.25s;
 }
 
 .menu a:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    transform: translateX(3px);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
 }
 
-.menu a.config-menu {
+
+/* =========================
+   ITEM ATIVO
+   ========================= */
+
+.menu a.active {
     background: #ffffff;
-    color: #0d47a1;
+    color: #1d374c;
 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.10);
 }
+
+
+/* =========================
+   BOTÃO SAIR
+   ========================= */
 
 .button-exit {
     margin-top: auto;
@@ -90,190 +139,100 @@ aside {
 
 .exit-menu {
     display: block;
-    text-align: center;
+
     padding: 12px;
+
     border-radius: 8px;
 
-    background: rgba(255, 255, 255, 0.12);
-    color: #eaf3ff;
+    background: rgba(255, 255, 255, 0.07);
+
+    color: #dce7ef;
 
     text-decoration: none;
-    font-size: 14px;
-    transition: 0.3s;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.25s;
 }
 
 .exit-menu:hover {
-    background: #dc2626;
-    color: white;
-    transform: translateY(-2px);
-}
-
-
-/* Conteúdo principal da página */
-.conteudo {
-    margin-left: 250px;
-    width: calc(100% - 250px);
-    min-height: 100vh;
-    padding: 45px 50px;
-}
-
-/* Cabeçalho da página */
-.cabecalho {
-    margin-bottom: 30px;
-}
-
-.cabecalho h1 {
-    font-size: 30px;
-    color: #0d47a1;
-    margin-bottom: 8px;
-}
-
-.cabecalho p {
-    color: #666;
-    font-size: 15px;
-}
-
-/* Cards principais */
-.cards-config {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-}
-
-.card-config,
-.card-preferencias {
     background: #ffffff;
-    border-radius: 14px;
-    padding: 25px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    color: #1d374c;
 }
 
-.card-icon {
-    color: #0d47a1;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 12px;
+
+/* =========================
+   CONTEÚDO DA PÁGINA
+   ========================= */
+
+.content {
+    width: calc(100% - 250px);
+
+    min-height: 100vh;
+
+    margin-left: 250px;
+
+    padding: 45px 55px 60px;
 }
 
-.card-titulo h2 {
-    font-size: 20px;
-    color: #111;
-    margin-bottom: 5px;
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+
+        padding: 25px 20px;
+    }
+
+    .dashboard {
+        display: block;
+    }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+
+        padding: 30px 20px;
+    }
+
+    .logo {
+        padding-bottom: 25px;
+        text-align: center;
+    }
+
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .menu a {
+        flex: 1;
+        text-align: center;
+    }
+
+    .button-exit {
+        margin-top: 20px;
+    }
 }
 
-.card-titulo p {
-    color: #777;
-    font-size: 14px;
-}
 
-/* Informações da conta */
-.informacoes {
-    margin: 25px 0;
-}
+@media (max-width: 450px) {
 
-.informacoes div,
-.seguranca-info {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
-}
+    .content {
+        padding: 25px 15px;
+    }
 
-.informacoes span,
-.seguranca-info span {
-    color: #777;
-    font-size: 13px;
-}
-
-.informacoes strong,
-.seguranca-info strong {
-    color: #222;
-    font-size: 14px;
-}
-
-/* Segurança */
-.seguranca-info {
-    margin: 25px 0;
-}
-
-/* Botões */
-.btn-config {
-    border: none;
-    background: #0d47a1;
-    color: white;
-    padding: 11px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-config:hover {
-    background: #1976d2;
-    transform: translateY(-2px);
-}
-
-/* Preferências */
-.card-preferencias {
-    margin-top: 25px;
-}
-
-.preferencia {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.preferencia:last-child {
-    border-bottom: none;
-}
-
-.preferencia div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.preferencia strong {
-    font-size: 15px;
-    color: #222;
-}
-
-.preferencia span {
-    font-size: 13px;
-    color: #777;
-}
-
-.preferencia .status {
-    background: #eaf3ff;
-    color: #0d47a1;
-    padding: 7px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-/* Sair da conta */
-.sair-conta {
-    margin-top: 30px;
-    text-align: right;
-}
-
-.sair-conta a {
-    display: inline-block;
-    text-decoration: none;
-    color: #dc2626;
-    border: 1px solid #dc2626;
-    padding: 11px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.sair-conta a:hover {
-    background: #dc2626;
-    color: white;
+    .menu {
+        flex-direction: column;
+    }
 }

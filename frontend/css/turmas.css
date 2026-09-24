@@ -1,6 +1,6 @@
-/* ========================================
+/* =========================
    RESET
-======================================== */
+   ========================= */
 
 * {
     margin: 0;
@@ -9,127 +9,129 @@
 }
 
 
-/* ========================================
+/* =========================
    BODY
-======================================== */
+   ========================= */
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(
-        135deg,
-        #020b18,
-        #0d47a1,
-        #1976d2
-    );
-    color: #111;
+    background: #f4f7fb;
+    color: #20384d;
 }
 
 
-/* ========================================
-   ESTRUTURA PRINCIPAL
-======================================== */
+/* =========================
+   ESTRUTURA
+   ========================= */
 
-.turmas {
+.dashboard {
     min-height: 100vh;
     display: flex;
 }
 
 
-/* ========================================
+/* =========================
    MENU LATERAL
-======================================== */
+   ========================= */
 
-aside {
+.sidebar {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 250px;
     height: 100vh;
-    background: linear-gradient(
-        160deg,
-        #020b18,
-        #0d47a1,
-        #1976d2
-    );
 
+    background: #1d374c;
     color: white;
+
     display: flex;
     flex-direction: column;
-    padding: 25px 16px;
+
+    padding: 35px 20px;
+
     z-index: 100;
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.25);
+
+    box-shadow:
+        8px 0 30px rgba(31, 51, 68, 0.08);
 }
 
 
-/* ========================================
+/* =========================
    LOGO
-======================================== */
+   ========================= */
 
 .logo {
-    text-align: center;
-    padding: 10px 0 38px;
+    padding: 5px 10px 45px;
 }
 
 .gea {
-    font-size: 34px;
-    font-weight: bold;
-    letter-spacing: 3px;
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 4px;
     color: #ffffff;
-    text-shadow:0 4px 12px rgba(0, 0, 0, 0.30);
 }
 
 .logo span {
     display: block;
-    margin-top: 7px;
-    color: #eaf3ff;
+
+    margin-top: 8px;
+
+    color: #dce7ef;
+
     font-size: 12px;
 }
 
 
-/* ========================================
+/* =========================
    MENU
-======================================== */
+   ========================= */
 
 .menu {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
 }
 
 .menu a {
     display: block;
-    padding: 14px 16px;
-    border-radius: 10px;
+
+    padding: 13px 15px;
+
+    border-radius: 9px;
+
+    color: #dce7ef;
+
     text-decoration: none;
-    color: #eaf3ff;
-    font-size: 15px;
-    font-weight: 500;
-    transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.25s;
 }
-
-
-/* HOVER */
 
 .menu a:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
     color: #ffffff;
-    transform: translateX(4px);
 }
 
 
-/* ABA ATIVA */
+/* =========================
+   ITEM ATIVO
+   ========================= */
 
-.menu a.class-menu {
+.menu a.active {
     background: #ffffff;
-    color: #0d47a1;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+    color: #1d374c;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.10);
 }
 
 
-/* ========================================
+/* =========================
    BOTÃO SAIR
-======================================== */
+   ========================= */
 
 .button-exit {
     margin-top: auto;
@@ -137,311 +139,100 @@ aside {
 
 .exit-menu {
     display: block;
+
     padding: 12px;
-    border-radius: 9px;
-    background: rgba(255, 255, 255, 0.12);
-    color: #eaf3ff;
-    text-align: center;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    color: #dce7ef;
+
     text-decoration: none;
-    font-size: 14px;
-    transition: 0.3s ease;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.25s;
 }
 
 .exit-menu:hover {
-    background: #dc2626;
-    color: #ffffff;
-    transform: translateY(-2px);
-}
-
-
-/* ========================================
-   CONTEÚDO PRINCIPAL
-======================================== */
-
-main {
-    min-height: 100vh;
-    width: calc(100% - 250px);
-    margin-left: 250px;
-    padding: 45px 50px;
-    background: #f4f7fb;
-}
-
-
-/* ========================================
-   TÍTULO
-======================================== */
-
-.page-title {
-    margin-bottom: 25px;
-}
-
-.page-title h1 {
-    color: #0d47a1;
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 7px;
-}
-
-.page-title p {
-    color: #5f6b7a;
-    font-size: 15px;
-}
-
-
-/* ========================================
-   ÁREA SUPERIOR
-======================================== */
-
-.select-container {
-    width: 100%;
-    max-width: 500px;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    background: linear-gradient( 135deg, #020b18, #0d47a1);
-    border: 2px solid rgba(25, 118, 210, 0.55);
-    border-radius: 18px;
-    box-shadow: 0 8px 20px rgba(2, 11, 24, 0.20);
-    transition: 0.3s ease;
-}
-
-
-/* AO PASSAR O MOUSE */
-
-.select-container:hover {
-    border-color: #1976d2;
-    box-shadow: 0 10px 25px rgba(13, 71, 161, 0.30);
-    transform: translateY(-2px);
-}
-
-
-/* ========================================
-   ÍCONE DO SELECT
-======================================== */
-
-.select-icon {
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.12);
-    font-size: 23px;
-}
-
-
-/* ========================================
-   SELECT
-======================================== */
-
-.select-container select {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    background: transparent;
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    appearance: auto;
-}
-
-/* OPÇÕES */
-
-.select-container select option {
-    background: #020b18;
-    color: #ffffff;
-    padding: 10px;
-}
-
-/* ========================================
-   ÁREA DOS ALUNOS
-======================================== */
-
-.alunos-section {
-    width: 100%;
-    margin-top: 25px;
-    padding: 25px;
     background: #ffffff;
-    border-radius: 20px;
-    border: 1px solid rgba(13, 71, 161, 0.08);
-    box-shadow: 0 8px 25px rgba(2, 11, 24, 0.08);
-    transition: 0.3s ease;
+    color: #1d374c;
 }
 
 
-/* ========================================
-   CABEÇALHO DOS ALUNOS
-======================================== */
+/* =========================
+   CONTEÚDO DA PÁGINA
+   ========================= */
 
-.alunos-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 16px;
-    margin-bottom: 18px;
-    border-bottom: 2px solid #e8eef6;
-}
+.content {
+    width: calc(100% - 250px);
 
-.alunos-header h2 {
-    color: #0d47a1;
-    font-size: 22px;
-}
+    min-height: 100vh;
 
-.alunos-header span {
-    padding: 7px 12px;
-    border-radius: 20px;
-    background: #e8f1ff;
-    color: #0d47a1;
-    font-size: 13px;
-    font-weight: bold;
+    margin-left: 250px;
+
+    padding: 45px 55px 60px;
 }
 
 
-/* ========================================
-   LISTA DE ALUNOS
-======================================== */
-
-.lista-alunos {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-
-/* ========================================
-   CARD DO ALUNO
-======================================== */
-
-.aluno-card {
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    background: #f7faff;
-    border: 1px solid #e2ebf7;
-    border-radius: 12px;
-    transition: 0.25s ease;
-}
-
-
-/* HOVER */
-
-.aluno-card:hover {
-    background: #eef5ff;
-    border-color: #b8d2f5;
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.08);
-}
-
-
-/* ========================================
-   NÚMERO DO ALUNO
-======================================== */
-
-.numero-aluno {
-    width: 40px;
-    color: #1976d2;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-
-/* ========================================
-   NOME DO ALUNO
-======================================== */
-
-.nome-aluno {
-    flex: 1;
-    color: #1e293b;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-
-/* ========================================
-   STATUS
-======================================== */
-
-.status-aluno {
-    min-width: 105px;
-    padding: 8px 14px;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-
-/* PRESENTE */
-
-.status-presente {
-    background: #e6f7ed;
-    color: #15803d;
-}
-
-/* FALTOU */
-
-.status-faltou {
-    background: #feecec;
-    color: #dc2626;
-}
-
-/* ATRASADO */
-
-.status-atrasado {
-    background: #fff4d6;
-    color: #b7791f;
-}
-
-/* ========================================
+/* =========================
    RESPONSIVIDADE
-======================================== */
+   ========================= */
 
-@media (max-width: 900px) {
-    aside {
-        width: 210px;
-    }
-    main {
-        width: calc(100% - 210px);
-        margin-left: 210px;
-        padding: 35px;
-    }
-    .select-container {
-        max-width: 100%;
-    }
-}
+@media (max-width: 700px) {
 
-
-@media (max-width: 650px) {
-    aside {
+    .sidebar {
         position: relative;
+
         width: 100%;
         height: auto;
+
+        padding: 25px 20px;
     }
-    .turmas {
-        flex-direction: column;
+
+    .dashboard {
+        display: block;
     }
-    main {
+
+    .content {
         width: 100%;
         margin-left: 0;
-        padding: 25px;
+
+        padding: 30px 20px;
     }
-    .alunos-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+
+    .logo {
+        padding-bottom: 25px;
+        text-align: center;
     }
-    .aluno-card {
+
+    .menu {
+        flex-direction: row;
         flex-wrap: wrap;
-        gap: 8px;
     }
-    .status-aluno {
-        margin-left: auto;
+
+    .menu a {
+        flex: 1;
+        text-align: center;
+    }
+
+    .button-exit {
+        margin-top: 20px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .content {
+        padding: 25px 15px;
+    }
+
+    .menu {
+        flex-direction: column;
     }
 }
