@@ -1,0 +1,5 @@
+# Arquivos com informações sensíveis
+backend/.env
+
+# Dependências do Node.js
+backend/node_modules/
