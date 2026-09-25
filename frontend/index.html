@@ -1,66 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>G.E.A PCL</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
+    <!-- Fundo -->
     <div id="background-effects"></div>
 
-    
-<main>
+    <!-- Conteúdo principal -->
+    <main>
 
-   <!-- =========================
-     IDENTIDADE DA ESCOLA
-     ========================= -->
-<section class="login-brand">
+        <!-- Identidade da escola -->
+        <section class="login-brand">
 
-    <div class="brand-content">
+            <div class="brand-content">
 
-        <span class="brand-label">G.E.A</span>
+                <span class="brand-label">G.E.A</span>
 
-        <h1>Gerenciamento de Alunos</h1>
+                <h1>
+                    Gerenciamento de Alunos
+                </h1>
 
-        <p>
-            Sistema de gerenciamento escolar
-            da Escola Pedro Casemiro Leite.
-        </p>
+                <p>
+                    Sistema de gerenciamento escolar
+                    da Escola Pedro Casemiro Leite.
+                </p>
 
-    </div>
+            </div>
 
-</section>
-
-<section>
-
-<h1>Seja Bem-Vindo</h1>
-
-<form id="formstudent">
-    <label for="ra">RA do Aluno</label>
-
-    <input id="ra" type="text" placeholder="Digite seu RA" autocomplete="off" required>
-
-    <label for="password">Senha</label>
-
-    <input id="password" type="password" placeholder="Digite sua Senha" required>
-
-    <button class="intial-button">Registrar Acesso</button>
-</form>
-
-<div class="link-adm">
-    
-    <a href="secretaria/login.html"> Acessar painel Administrativo</a>
-
-</div>
+        </section>
 
 
-</section>
-    
-</main>
+        <!-- Login do aluno -->
+        <section class="login-card">
 
-<script src="js/script.js"></script>
+            <h1>
+                Seja Bem-Vindo
+            </h1>
+
+            <form id="formstudent">
+
+                <label for="ra">
+                    RA do Aluno
+                </label>
+
+                <input
+                    id="ra"
+                    type="text"
+                    placeholder="Digite seu RA"
+                    autocomplete="off"
+                    required
+                >
+
+                <label for="password">
+                    Senha
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Digite sua Senha"
+                    required
+                >
+
+                <button
+                    class="intial-button"
+                    type="submit"
+                >
+                    Registrar Acesso
+                </button>
+
+            </form>
+
+            <!-- Link para a secretaria -->
+            <div class="link-adm">
+
+                <a href="secretaria/login.html">
+                    Acessar painel Administrativo
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- QR Code -->
+        <section class="qr-card">
+
+            <div class="qr-content">
+
+                <div class="qr-icon">
+                    ⌗
+                </div>
+
+                <h2>
+                    QR Code
+                </h2>
+
+                <p>
+                    Faça login para gerar
+                    seu código de acesso.
+                </p>
+
+                <!-- Espaço reservado para o QR -->
+                <div class="qr-placeholder" id="qrcode">
+
+                    <span class="qr-lock">
+                        🔒
+                    </span>
+
+                    <span>
+                        QR Code bloqueado
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>

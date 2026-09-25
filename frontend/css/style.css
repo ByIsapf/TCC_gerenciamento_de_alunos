@@ -17,14 +17,6 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
     color: #172333;
-}
-
-
-/* =========================
-   PÁGINA
-   ========================= */
-
-body {
     background: #dce5ed;
 }
 
@@ -52,9 +44,11 @@ main {
     position: relative;
     z-index: 1;
     min-height: 100vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     padding: 40px;
 }
 
@@ -64,17 +58,24 @@ main {
    ========================= */
 
 .login-brand {
-    width: 370px;
+    width: 350px;
     min-height: 530px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 45px;
-    border-radius: 24px 0 0 24px;
+
+    border-radius: 24px;
+
     background: rgba(29, 55, 76, 0.88);
     color: white;
+
     box-shadow:
         0 25px 60px rgba(31, 51, 68, 0.22);
+
+    animation: focoSuave 0.6s ease-out both;
 }
 
 .brand-content {
@@ -83,25 +84,135 @@ main {
 
 .brand-label {
     display: inline-block;
+
     font-size: 58px;
     font-weight: 900;
     letter-spacing: 5px;
+
     margin-bottom: 28px;
+
     color: #ffffff;
 }
 
 .login-brand h1 {
     font-size: 30px;
     line-height: 1.2;
+
     margin-bottom: 18px;
+
     color: #ffffff;
 }
 
 .login-brand p {
     max-width: 270px;
+
     font-size: 15px;
     line-height: 1.7;
+
     color: #dce7ef;
+}
+
+
+/* =========================
+   CARD DO QR CODE
+   ========================= */
+
+.qr-card {
+    width: 330px;
+    min-height: 530px;
+
+    padding: 45px 35px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 25px 60px rgba(31, 51, 68, 0.22);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    animation: focoSuave 0.7s ease-out both;
+}
+
+.qr-content {
+    width: 100%;
+}
+
+.qr-icon {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #eef3f7;
+
+    color: #294d68;
+
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.qr-content h2 {
+    font-size: 24px;
+    color: #20384d;
+
+    margin-bottom: 12px;
+}
+
+.qr-content > p {
+    max-width: 230px;
+
+    margin: 0 auto 28px;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    color: #718392;
+}
+
+
+/* =========================
+   ESPAÇO DO QR CODE
+   ========================= */
+
+.qr-placeholder {
+    width: 190px;
+    height: 190px;
+
+    margin: 0 auto;
+
+    border: 2px dashed #c7d4de;
+    border-radius: 16px;
+
+    background: #f7f9fb;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    color: #8495a3;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.qr-lock {
+    font-size: 32px;
+    opacity: 0.75;
 }
 
 
@@ -109,17 +220,24 @@ main {
    CARD DE LOGIN
    ========================= */
 
-main > section:last-child {
-    width: 440px;
+.login-card {
+    width: 400px;
     min-height: 530px;
+
     padding: 50px 45px;
+
     background: rgba(255, 255, 255, 0.96);
-    border-radius: 0 24px 24px 0;
+
+    border-radius: 24px;
+
     box-shadow:
         0 25px 60px rgba(31, 51, 68, 0.22);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    animation: focoSuave 0.8s ease-out both;
 }
 
 
@@ -127,10 +245,13 @@ main > section:last-child {
    TÍTULO
    ========================= */
 
-main > section:last-child h1 {
+.login-card h1 {
     font-size: 24px;
+
     color: #20384d;
+
     margin-bottom: 40px;
+
     text-align: left;
 }
 
@@ -152,7 +273,9 @@ main > section:last-child h1 {
 #formstudent label {
     font-size: 13px;
     font-weight: bold;
+
     color: #34495a;
+
     margin-bottom: 9px;
 }
 
@@ -164,15 +287,22 @@ main > section:last-child h1 {
 #formstudent input {
     width: 100%;
     height: 50px;
+
     padding: 0 16px;
     margin-bottom: 22px;
+
     border: 1px solid #d3dee7;
     border-radius: 9px;
+
     background: #f7f9fb;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
+
     color: #243746;
+
     outline: none;
+
     transition: 0.25s;
 }
 
@@ -186,7 +316,9 @@ main > section:last-child h1 {
 
 #formstudent input:focus {
     border-color: #6689a2;
+
     background: #ffffff;
+
     box-shadow:
         0 0 0 4px rgba(102, 137, 162, 0.10);
 }
@@ -199,21 +331,30 @@ main > section:last-child h1 {
 .intial-button {
     width: 100%;
     height: 51px;
+
     margin-top: 7px;
+
     border: none;
     border-radius: 9px;
+
     background: #294d68;
+
     color: #ffffff;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     font-weight: bold;
+
     cursor: pointer;
+
     transition: 0.25s;
 }
 
 .intial-button:hover {
     background: #203f56;
+
     transform: translateY(-2px);
+
     box-shadow:
         0 8px 20px rgba(41, 77, 104, 0.22);
 }
@@ -229,14 +370,18 @@ main > section:last-child h1 {
 
 .link-adm {
     text-align: center;
+
     margin-top: 30px;
 }
 
 .link-adm a {
     color: #55758e;
+
     font-size: 13px;
     font-weight: bold;
+
     text-decoration: none;
+
     transition: 0.25s;
 }
 
@@ -249,11 +394,6 @@ main > section:last-child h1 {
 /* =========================
    ANIMAÇÃO DE ENTRADA
    ========================= */
-
-.login-brand,
-main > section:last-child {
-    animation: focoSuave 0.6s ease-out both;
-}
 
 @keyframes focoSuave {
 
@@ -274,18 +414,44 @@ main > section:last-child {
    RESPONSIVIDADE
    ========================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
+
+    main {
+        gap: 20px;
+        padding: 30px;
+    }
+
+    .login-brand {
+        width: 300px;
+    }
+
+    .qr-card {
+        width: 300px;
+    }
+
+    .login-card {
+        width: 360px;
+    }
+
+}
+
+
+@media (max-width: 950px) {
 
     main {
         flex-direction: column;
         padding: 25px;
     }
 
-    .login-brand {
+    .login-brand,
+    .qr-card,
+    .login-card {
         width: 100%;
         max-width: 440px;
-        min-height: 240px;
-        border-radius: 24px 24px 0 0;
+        min-height: auto;
+    }
+
+    .login-brand {
         padding: 40px;
     }
 
@@ -304,13 +470,14 @@ main > section:last-child {
 
     .login-brand p {
         max-width: 100%;
+        margin: 0 auto;
     }
 
-    main > section:last-child {
-        width: 100%;
-        max-width: 440px;
-        min-height: auto;
-        border-radius: 0 0 24px 24px;
+    .qr-card {
+        padding: 40px;
+    }
+
+    .login-card {
         padding: 45px 40px;
     }
 
@@ -324,7 +491,6 @@ main > section:last-child {
     }
 
     .login-brand {
-        min-height: 210px;
         padding: 30px 25px;
     }
 
@@ -341,11 +507,20 @@ main > section:last-child {
         font-size: 13px;
     }
 
-    main > section:last-child {
+    .qr-card {
         padding: 35px 25px;
     }
 
-    main > section:last-child h1 {
+    .qr-placeholder {
+        width: 170px;
+        height: 170px;
+    }
+
+    .login-card {
+        padding: 35px 25px;
+    }
+
+    .login-card h1 {
         font-size: 21px;
         margin-bottom: 30px;
     }
