@@ -23,3 +23,61 @@ for (let i = 0; i < quantidade; i++) {
 
     background.appendChild(particle);
 }
+
+
+// =========================
+// LOGIN DO ALUNO
+// =========================
+
+const form = document.getElementById("formstudent");
+
+form.addEventListener("submit", async function (event) {
+
+    // Impede o formulário de recarregar a página
+    event.preventDefault();
+
+    // Pega os valores digitados
+    const ra = document.getElementById("ra").value;
+    const senha = document.getElementById("password").value;
+
+    try {
+
+        // Envia os dados para o backend
+        const resposta = await fetch("http://localhost:3000/alunos/login", {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                ra: ra,
+                senha: senha
+            })
+        });
+
+        const dados = await resposta.json();
+
+        // Se o login estiver correto
+        if (resposta.ok) {
+
+            alert("Login realizado com sucesso!");
+
+            console.log("Aluno logado:", dados.aluno);
+
+        } else {
+
+            // Se RA ou senha estiverem errados
+            alert(dados.mensagem);
+
+        }
+
+    } catch (erro) {
+
+        console.error("Erro ao conectar com o backend:", erro);
+
+        alert("Não foi possível conectar ao servidor.");
+
+    }
+
+});
