@@ -5,6 +5,7 @@ require("dotenv").config({ path: "./backend/.env" });
 
 const db = require("./config/database");
 const alunoRoutes = require("./routes/alunoRoutes");
+const qrRoutes = require("./routes/qrRoutes");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // Rotas dos alunos
 app.use("/alunos", alunoRoutes);
+app.use("/qr", qrRoutes);
 
 app.get("/", (req, res) => {
     res.send("Backend do G.E.A funcionando!");
