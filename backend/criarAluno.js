@@ -1,34 +1,35 @@
-console.log("1 - arquivo iniciou");
+require("dotenv").config({ path: "./backend/.env" });
 
 const bcrypt = require("bcrypt");
-console.log("2 - bcrypt carregado");
-
 const db = require("./config/database");
-console.log("3 - banco carregado");
 
 async function criarAluno() {
-    console.log("4 - função iniciou");
 
     try {
-        const senha = "123456";
-        const senhaHash = await bcrypt.hash(senha, 10);
 
-        console.log("5 - senha transformada");
+        const senhaCriptografada =
+            await bcrypt.hash("123456", 10);
 
         await db.query(
             `INSERT INTO alunos (ra, nome, senha)
              VALUES (?, ?, ?)`,
-            ["12345678", "Aluno Teste", senhaHash]
+            ["87654321", "Erick", senhaCriptografada]
         );
 
-        console.log("Aluno criado com sucesso!");
+        console.log("Aluno Erick criado com sucesso!");
+
+        process.exit(0);
 
     } catch (erro) {
-        console.error("Erro ao criar aluno:", erro);
 
-    } finally {
-        await db.end();
+        console.error(
+            "Erro ao criar aluno:",
+            erro
+        );
+
+        process.exit(1);
     }
+
 }
 
 criarAluno();
