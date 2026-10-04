@@ -43,7 +43,7 @@ form.addEventListener("submit", async function (event) {
     try {
 
         // Envia os dados para o backend
-        const resposta = await fetch("http://localhost:3000/alunos/login", {
+        const resposta = await fetch("/alunos/login", {
             method: "POST",
 
             headers: {
@@ -59,32 +59,34 @@ form.addEventListener("submit", async function (event) {
         const dados = await resposta.json();
 
         // Se o login estiver correto
-       if (resposta.ok) {
+        if (resposta.ok) {
 
-    alert("Login realizado com sucesso!");
+            alert("Login realizado com sucesso!");
 
-    console.log("Aluno logado:", dados.aluno);
-    console.log("Token do QR:", dados.token);
-
-
-    // =========================
-    // GERA O QR CODE
-    // =========================
-
-    const qrArea = document.getElementById("qrcode");
-
-    // Limpa o conteúdo anterior
-    qrArea.innerHTML = "";
+            console.log("Aluno logado:", dados.aluno);
 
 
-    // Cria o QR Code usando o token
-    new QRCode(qrArea, {
-        text: dados.token,
-        width: 190,
-        height: 190
-    });
+            // =========================
+            // GERA O QR CODE
+            // =========================
 
-    } else {
+            const qrArea = document.getElementById("qrcode");
+
+            // Limpa o conteúdo anterior
+            qrArea.innerHTML = "";
+
+            // Cria o endereço da página de presença
+            const urlPresenca =
+                `${window.location.origin}/presenca.html?token=${encodeURIComponent(dados.token)}`;
+
+            // Gera o QR Code
+            new QRCode(qrArea, {
+                text: urlPresenca,
+                width: 190,
+                height: 190
+            });
+
+        } else {
 
             // Se RA ou senha estiverem errados
             alert(dados.mensagem);

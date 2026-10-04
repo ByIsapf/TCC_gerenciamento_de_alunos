@@ -18,18 +18,22 @@ async function registrarPresenca(req, res) {
 
 
         // =========================
-        // PROCURA O TOKEN NO BANCO
+        // PROCURA O TOKEN E O ALUNO
         // =========================
 
         const [tokens] = await db.query(
-            `SELECT *
+            `SELECT
+                qr_tokens.*,
+                alunos.nome
              FROM qr_tokens
-             WHERE token = ?`,
+             INNER JOIN alunos
+                ON qr_tokens.aluno_id = alunos.id
+             WHERE qr_tokens.token = ?`,
             [token]
         );
 
 
-        // Se o token não existir
+        // Token não existe
         if (tokens.length === 0) {
 
             return res.status(401).json({
@@ -69,7 +73,7 @@ async function registrarPresenca(req, res) {
 
 
         // =========================
-        // VERIFICA SE JÁ TEM PRESENÇA HOJE
+        // VERIFICA PRESENÇA DO DIA
         // =========================
 
         const [frequencias] = await db.query(
@@ -84,7 +88,7 @@ async function registrarPresenca(req, res) {
         if (frequencias.length > 0) {
 
             return res.status(409).json({
-                mensagem: "A presença deste aluno já foi registrada hoje."
+                mensagem: "Sua presença já foi registrada hoje."
             });
 
         }
@@ -115,11 +119,40 @@ async function registrarPresenca(req, res) {
 
 
         // =========================
-        // PRESENÇA REGISTRADA
+        // BUSCA A PRESENÇA REGISTRADA
+        // =========================
+
+        const [presencas] = await db.query(
+            `SELECT
+                DATE_FORMAT(data, '%d/%m/%Y') AS data,
+                TIME_FORMAT(horario, '%H:%i') AS horario
+             FROM frequencias
+             WHERE aluno_id = ?
+             AND data = CURDATE()`,
+            [qrToken.aluno_id]
+        );
+
+
+        const presenca = presencas[0];
+
+
+        // =========================
+        // RESPOSTA PARA O CELULAR
         // =========================
 
         res.json({
-            mensagem: "Presença registrada com sucesso!"
+
+            mensagem: "Presença registrada com sucesso!",
+
+            aluno: {
+                nome: qrToken.nome
+            },
+
+            presenca: {
+                data: presenca.data,
+                horario: presenca.horario
+            }
+
         });
 
 

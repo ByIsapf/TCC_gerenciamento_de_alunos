@@ -12,13 +12,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rotas dos alunos
+// Permite acessar os arquivos do frontend pelo servidor
+app.use(express.static("frontend"));
+
+// Rotas
 app.use("/alunos", alunoRoutes);
 app.use("/qr", qrRoutes);
-
-app.get("/", (req, res) => {
-    res.send("Backend do G.E.A funcionando!");
-});
 
 // Rota para testar a conexão com o banco
 app.get("/teste-db", async (req, res) => {
@@ -29,6 +28,7 @@ app.get("/teste-db", async (req, res) => {
             mensagem: "Conexão com o banco funcionando!",
             resultado
         });
+
     } catch (erro) {
         console.error("Erro ao conectar com o banco:", erro);
 
@@ -38,8 +38,8 @@ app.get("/teste-db", async (req, res) => {
     }
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Servidor G.E.A rodando na porta ${PORT}`);
 });
