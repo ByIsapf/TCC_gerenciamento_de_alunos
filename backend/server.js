@@ -6,6 +6,7 @@ require("dotenv").config({ path: "./backend/.env" });
 const db = require("./config/database");
 const alunoRoutes = require("./routes/alunoRoutes");
 const qrRoutes = require("./routes/qrRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.static("frontend"));
 // Rotas
 app.use("/alunos", alunoRoutes);
 app.use("/qr", qrRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 // Rota para testar a conexão com o banco
 app.get("/teste-db", async (req, res) => {

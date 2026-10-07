@@ -14,266 +14,175 @@
 
     <div class="dashboard">
 
-        <!-- =========================
-             MENU LATERAL
-             ========================= -->
-
         <aside class="sidebar">
 
             <div class="logo">
-
                 <div class="gea">G.E.A</div>
-
                 <span>Pedro Casemiro Leite</span>
-
             </div>
 
-
             <nav class="menu">
-
-                <a href="dashboard.html" class="active">
-                    Dashboard
-                </a>
-
-                <a href="turmas.html">
-                    Turmas
-                </a>
-
-                <a href="configuracoes.html">
-                    Configurações
-                </a>
-
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="turmas.html">Turmas</a>
+                <a href="configuracoes.html">Configurações</a>
             </nav>
 
-
             <div class="button-exit">
-
-                <a href="../secretaria/login.html" class="exit-menu">
-                    Sair
-                </a>
-
+                <a href="../secretaria/login.html" class="exit-menu">Sair</a>
             </div>
 
         </aside>
 
-
-        <!-- =========================
-             CONTEÚDO PRINCIPAL
-             ========================= -->
-
         <main class="content">
-
-
-            <!-- CABEÇALHO -->
 
             <header class="top">
 
                 <div class="page-title">
-
                     <span>G.E.A / Secretaria</span>
-
                     <h1>Visão geral</h1>
-
-                    <p>
-                        Acompanhe as principais informações do sistema.
-                    </p>
-
+                    <p>Acompanhe as principais informações do sistema.</p>
                 </div>
 
-
                 <div class="user-info">
-
                     <strong>Gestão</strong>
-
                     <small>P.C.L</small>
-
                 </div>
 
             </header>
 
-
-
-            <!-- =========================
-                 RESUMO
-                 ========================= -->
-
             <section class="overview">
 
-
-                <!-- DESTAQUE PRINCIPAL -->
-
                 <div class="main-stat">
+                    <span class="stat-label">ALUNOS CADASTRADOS</span>
 
-                    <span class="stat-label">
-                        ALUNOS CADASTRADOS
-                    </span>
+                    <strong class="stat-number" id="total-alunos">0</strong>
 
-                    <strong class="stat-number">
-                        842
-                    </strong>
+                    <p>Total de alunos registrados no sistema.</p>
 
-                    <p>
-                        Total de alunos registrados no sistema.
-                    </p>
-
-                    <a href="alunos.html" class="stat-link">
-                        Ver alunos →
-                    </a>
-
+                    <a href="turmas.html" class="stat-link">Ver alunos →</a>
                 </div>
-
-
-                <!-- TURMAS -->
 
                 <div class="small-stat">
+                    <span class="stat-label">TURMAS</span>
 
-                    <span class="stat-label">
-                        TURMAS
-                    </span>
+                    <strong class="small-number" id="total-turmas">12</strong>
 
-                    <strong class="small-number">
-                        28
-                    </strong>
+                    <p>Turmas cadastradas.</p>
 
-                    <p>
-                        Turmas cadastradas.
-                    </p>
-
-                    <a href="turmas.html" class="stat-link">
-                        Consultar →
-                    </a>
-
+                    <a href="turmas.html" class="stat-link">Consultar →</a>
                 </div>
 
-
-                <!-- FREQUÊNCIA -->
-
                 <div class="attendance">
-
-                    <span class="stat-label">
-                        FREQUÊNCIA HOJE
-                    </span>
+                    <span class="stat-label">FREQUÊNCIA HOJE</span>
 
                     <div class="attendance-number">
-
-                        <strong>
-                            798
-                        </strong>
-
-                        <span>
-                            presentes
-                        </span>
-
+                        <strong id="presentes-numero">0</strong>
+                        <span>presentes</span>
                     </div>
 
                     <div class="attendance-details">
-
-                        <span>
-                            44 ausentes
-                        </span>
-
+                        <span id="resumo-frequencia">Carregando...</span>
                     </div>
 
-                    <a href="frequencia.html" class="stat-link">
-                        Ver frequência →
-                    </a>
-
+                    <a href="turmas.html" class="stat-link">Ver frequência →</a>
                 </div>
-
 
             </section>
 
+            <section class="attendance-overview">
 
+                <div class="section-heading">
+                    <span>FREQUÊNCIA DE HOJE</span>
+                    <h2>Situação dos alunos</h2>
+                </div>
 
-            <!-- =========================
-                 ACESSOS RÁPIDOS
-                 ========================= -->
+                <div class="percentage-grid">
+
+                    <article class="percentage-card">
+                        <div class="percentage-card-top">
+                            <span class="percentage-label">PRESENTES</span>
+                            <strong id="percent-presentes">0%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <span id="bar-presentes"></span>
+                        </div>
+
+                        <p><strong id="count-presentes">0</strong> alunos presentes hoje.</p>
+                    </article>
+
+                    <article class="percentage-card">
+                        <div class="percentage-card-top">
+                            <span class="percentage-label">AUSENTES</span>
+                            <strong id="percent-ausentes">0%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <span id="bar-ausentes"></span>
+                        </div>
+
+                        <p><strong id="count-ausentes">0</strong> alunos ainda não registrados.</p>
+                    </article>
+
+                    <article class="percentage-card">
+                        <div class="percentage-card-top">
+                            <span class="percentage-label">ATRASADOS</span>
+                            <strong id="percent-atrasados">0%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <span id="bar-atrasados"></span>
+                        </div>
+
+                        <p><strong id="count-atrasados">0</strong> alunos chegaram atrasados.</p>
+                    </article>
+
+                </div>
+
+            </section>
 
             <section class="quick-access">
 
                 <div class="section-heading">
-
                     <span>ACESSOS</span>
-
                     <h2>Acesso rápido</h2>
-
                 </div>
-
 
                 <div class="quick-links">
 
-                    <a href="alunos.html" class="quick-link">
-
+                    <a href="turmas.html" class="quick-link">
                         <div>
-
-                            <strong>
-                                Gerenciar alunos
-                            </strong>
-
-                            <span>
-                                Consultar cadastros e informações.
-                            </span>
-
+                            <strong>Gerenciar alunos</strong>
+                            <span>Consultar cadastros e informações.</span>
                         </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
+                        <span class="arrow">→</span>
                     </a>
-
 
                     <a href="turmas.html" class="quick-link">
-
                         <div>
-
-                            <strong>
-                                Consultar turmas
-                            </strong>
-
-                            <span>
-                                Visualizar alunos e informações das turmas.
-                            </span>
-
+                            <strong>Consultar turmas</strong>
+                            <span>Visualizar alunos e informações das turmas.</span>
                         </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
+                        <span class="arrow">→</span>
                     </a>
 
-
-                    <a href="frequencia.html" class="quick-link">
-
+                    <a href="turmas.html" class="quick-link">
                         <div>
-
-                            <strong>
-                                Frequência
-                            </strong>
-
-                            <span>
-                                Acompanhar presença, faltas e atrasos.
-                            </span>
-
+                            <strong>Frequência</strong>
+                            <span>Acompanhar presença, faltas e atrasos.</span>
                         </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
+                        <span class="arrow">→</span>
                     </a>
 
                 </div>
 
             </section>
-
 
         </main>
 
     </div>
 
+    <script src="../js/dashboard.js"></script>
 
 </body>
-
 </html>
