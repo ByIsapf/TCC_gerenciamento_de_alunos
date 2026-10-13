@@ -3,104 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G.E.A PCL</title>
+    <title>Turmas | G.E.A PCL</title>
     <link rel="stylesheet" href="../css/turmas.css">
+    <script src="../js/turmas.js" defer></script>
 </head>
 <body>
-
     <div class="turmas">
-  <!-- =========================
-             MENU LATERAL
-             ========================= -->
-
         <aside class="sidebar">
-
             <div class="logo">
-
                 <div class="gea">G.E.A</div>
-
                 <span>Pedro Casemiro Leite</span>
-
             </div>
-
 
             <nav class="menu">
-
-                <a href="dashboard.html" >
-                    Dashboard
-                </a>
-
-                <a href="turmas.html" class="active">
-                    Turmas
-                </a>
-
-                <a href="configuracoes.html">
-                    Configurações
-                </a>
-
+                <a href="dashboard.html">Dashboard</a>
+                <a href="turmas.html" class="active">Turmas</a>
+                <a href="configuracoes.html">Configurações</a>
             </nav>
 
-
             <div class="button-exit">
-
-                <a href="../secretaria/login.html" class="exit-menu">
-                    Sair
-                </a>
-
+                <a href="../index.html" class="exit-menu">Sair</a>
             </div>
-
         </aside>
 
-        <!-- CONTEÚDO PRINCIPAL -->
-<main>
+        <main class="content">
+            <header class="page-title">
+                <h1>Turmas</h1>
+                <p>Selecione uma turma para consultar os alunos e a situação de cada um.</p>
+            </header>
 
-    <!-- TÍTULO -->
-    <section class="page-title">
-        <h1>Turmas</h1>
-      
-    </section>
+            <section class="turmas-section" aria-labelledby="filtroTitulo">
+                <label id="filtroTitulo" for="selectTurma">Filtrar por turma</label>
+                <select id="selectTurma" name="turma">
+                    <option value="">Selecione uma turma</option>
+                    <optgroup label="1º ano">
+                        <option value="1A">1A</option>
+                        <option value="1B">1B</option>
+                        <option value="1C">1C</option>
+                        <option value="1D">1D</option>
+                    </optgroup>
+                    <optgroup label="2º ano">
+                        <option value="2A">2A</option>
+                        <option value="2B">2B</option>
+                        <option value="2C">2C</option>
+                        <option value="2D">2D</option>
+                    </optgroup>
+                    <optgroup label="3º ano">
+                        <option value="3A">3A</option>
+                        <option value="3B">3B</option>
+                        <option value="3C">3C</option>
+                        <option value="3D">3D</option>
+                    </optgroup>
+                </select>
+            </section>
 
-    <!-- SELEÇÃO DA TURMA -->
-    <div class="select-container">
+            <section class="alunos-section" aria-labelledby="tituloTurma" aria-live="polite">
+                <div class="alunos-header">
+                    <h2 id="tituloTurma">Selecione uma turma</h2>
+                    <span id="contadorAlunos">0 alunos</span>
+                </div>
 
-        <select id="selectTurma">
-            <option value="" disabled selected>
-                Selecione uma turma</option>
-
-            <option value="1A">1A</option>
-            <option value="1B">1B</option>
-            <option value="1C">1C</option>
-            <option value="1D">1D</option>
-
-            <option value="2A">2A</option>
-            <option value="2B">2B</option>
-            <option value="2C">2C</option>
-            <option value="2D">2D</option>
-
-            <option value="3A">3A</option>
-            <option value="3B">3B</option>
-            <option value="3C">3C</option>
-            <option value="3D">3D</option>
-        </select>
-
+                <div id="listaAlunos" class="lista-alunos">
+                    <div class="estado-vazio">
+                        <span class="estado-icone" aria-hidden="true">🏫</span>
+                        <h3>Nenhuma turma selecionada</h3>
+                        <p>Escolha uma turma no filtro acima para visualizar os alunos cadastrados.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
-
-    <!-- LISTA DE ALUNOS -->
-    <section class="alunos-section" id="alunosSection">
-
-        <div class="alunos-header">
-            <h2 id="tituloTurma">
-                Selecione uma turma</h2>
-
-            <span id="contadorAlunos">
-                0 alunos</span>
-        </div>
-
-    </section>
-
-</main>
-
-</div>
-
 </body>
 </html>
