@@ -1,187 +1,103 @@
-
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G.E.A PCL</title>
-    <link rel="stylesheet" href="../css/configuracoes.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G.E.A PCL | Configurações</title>
+  <link rel="stylesheet" href="../css/gestao.css">
+  <link rel="stylesheet" href="../css/configuracoes.css">
 </head>
-
 <body>
 
-<div class="configuracoes">
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="logo"><div class="gea">G.E.A</div><span>Pedro Casemiro Leite</span></div>
+    <nav class="menu">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="turmas.html">Turmas</a>
+      <a href="configuracoes.html" class="active">Configurações</a>
+    </nav>
+    <div class="button-exit"><a href="../secretaria/login.html" class="exit-menu">Sair</a></div>
+  </aside>
 
-<aside>
-
-<div class="logo">
-    <div class="gea">G.E.A</div>
-    <span>Pedro Casemiro Leite</span>
-</div>
-  <div class="turmas">
-  <!-- =========================
-             MENU LATERAL
-             ========================= -->
-
-        <aside class="sidebar">
-
-            <div class="logo">
-
-                <div class="gea">G.E.A</div>
-
-                <span>Pedro Casemiro Leite</span>
-
-            </div>
-
-
-            <nav class="menu">
-
-                <a href="dashboard.html" >
-                    Dashboard
-                </a>
-
-                <a href="turmas.html" >
-                    Turmas
-                </a>
-
-                <a href="configuracoes.html" class="active">
-                    Configurações
-                </a>
-
-            </nav>
-
-
-            <div class="button-exit">
-
-                <a href="../secretaria/login.html" class="exit-menu">
-                    Sair
-                </a>
-
-            </div>
-
-        </aside>
-
-<!-- Conteúdo da página -->
-<main class="conteudo">
-
-    <div class="cabecalho">
+  <main class="content settings-content">
+    <header class="top">
+      <div class="page-title">
+        <span>ADMINISTRAÇÃO</span>
         <h1>Configurações</h1>
-        <p>Gerencie as configurações da sua conta.</p>
-    </div>
+        <p>Gerencie os alunos das turmas e a segurança da conta da gestão.</p>
+      </div>
+      <div class="user-info"><strong>Gestão</strong><small>P.C.L</small></div>
+    </header>
 
-    <section class="cards-config">
+    <section class="settings-section">
+      <div class="section-heading">
+        <span>CADASTRO ESCOLAR</span>
+        <h2>Adicionar aluno à turma</h2>
+      </div>
+      <form id="form-adicionar-aluno" class="settings-card">
+        <div class="form-grid">
+          <div class="field"><label for="nome-aluno">Nome completo</label><input id="nome-aluno" name="nome" required maxlength="120" placeholder="Digite o nome do aluno"></div>
+          <div class="field"><label for="ra-aluno">RA (Registro do Aluno)</label><input id="ra-aluno" name="ra" required maxlength="30" placeholder="Digite o RA"></div>
+          <div class="field"><label for="turma-aluno">Turma</label><select id="turma-aluno" name="turma" required><option value="">Selecione a turma</option>
 
-        <!-- Minha conta -->
-        <div class="card-config">
+            <option>1A</option><option>1B</option><option>1C</option><option>1D</option>
+            <option>2A</option><option>2B</option><option>2C</option><option>2D</option>
+            <option>3A</option><option>3B</option><option>3C</option><option>3D</option>
 
-            <div class="card-icon">👤</div>
-
-            <div class="card-titulo">
-                <h2>Minha conta</h2>
-                <p>Informações da sua conta</p>
-            </div>
-
-            <div class="informacoes">
-
-                <div>
-                    <span>Nome</span>
-                    <strong>Usuário</strong>
-                </div>
-
-                <div>
-                    <span>E-mail</span>
-                    <strong>usuario@escola.com</strong>
-                </div>
-
-                <div>
-                    <span>Tipo de usuário</span>
-                    <strong>Secretaria</strong>
-                </div>
-
-            </div>
-
-            <button class="btn-config">
-                Editar perfil
-            </button>
-
+          </select>
+          </div>
         </div>
-
-        <!-- Segurança -->
-        <div class="card-config">
-
-            <div class="card-icon">🔒</div>
-
-            <div class="card-titulo">
-                <h2>Segurança</h2>
-                <p>Gerencie sua senha</p>
-            </div>
-
-            <div class="seguranca-info">
-
-                <span>Senha</span>
-                <strong>••••••••••</strong>
-
-            </div>
-
-            <button class="btn-config">
-                Alterar senha
-            </button>
-
-        </div>
-
+        <button class="settings-button" type="submit">+ Adicionar aluno</button>
+        <p class="form-note">O cadastro de novos alunos deve ser conectado ao endpoint de cadastro do backend. A lista abaixo carrega os alunos já existentes no MySQL.</p>
+      </form>
     </section>
 
-    <!-- Preferências -->
-    <section class="card-preferencias">
+    <section class="settings-section">
+      <div class="section-heading">
+        <span>GERENCIAMENTO</span>
+        <h2>Alunos já cadastrados</h2>
+      </div>
+      <div class="settings-card">
+        <div class="list-toolbar">
+          <label for="filtro-turma">Filtrar por turma</label>
+          <select id="filtro-turma"><option value="">Todas as turmas</option>
 
-        <div class="card-icon">🔔</div>
-
-        <div class="card-titulo">
-            <h2>Preferências</h2>
-            <p>Escolha suas preferências</p>
+            <option>1A</option><option>1B</option><option>1C</option><option>1D</option>
+            <option>2A</option><option>2B</option><option>2C</option><option>2D</option>
+            <option>3A</option><option>3B</option><option>3C</option><option>3D</option>
+            
+          </select>
         </div>
-
-        <div class="preferencia">
-
-            <div>
-                <strong>Notificações</strong>
-                <span>Receber notificações do sistema</span>
-            </div>
-
-            <span class="status">
-                Ativadas
-            </span>
-
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Aluno</th><th>RA</th><th>Turma</th><th>Ação</th></tr></thead>
+            <tbody id="lista-alunos"><tr class="empty-row"><td colspan="4">Carregando alunos cadastrados...</td></tr></tbody>
+          </table>
         </div>
-
-        <div class="preferencia">
-
-            <div>
-                <strong>Tema</strong>
-                <span>Tema atual do sistema</span>
-            </div>
-
-            <span class="status">
-                Claro
-            </span>
-
-        </div>
-
+        <p class="form-note">A exclusão remove o aluno do banco de dados e não pode ser desfeita. Confirme cuidadosamente antes de excluir. 
+          A tabela atual do banco não possui coluna de turma, então a turma será exibida como “Não definida”.</p>
+      </div>
     </section>
 
-    <!-- Sair -->
-    <div class="sair-conta">
-
-        <a href="gestao-login.html">
-            🚪 Sair da conta
-        </a>
-
-    </div>
-
-</main>
-
+    <section class="settings-section">
+      <div class="section-heading">
+        <span>SEGURANÇA</span>
+        <h2>Alterar senha da gestão</h2>
+      </div>
+      <form id="form-senha" class="settings-card password-card">
+        <div class="form-grid">
+          <div class="field"><label for="senha-atual">Senha atual</label><input type="password" id="senha-atual" required autocomplete="current-password" placeholder="Digite a senha atual"></div>
+          <div class="field"><label for="nova-senha">Nova senha</label><input type="password" id="nova-senha" required minlength="8" autocomplete="new-password" placeholder="Mínimo de 8 caracteres"></div>
+          <div class="field"><label for="confirmar-senha">Confirmar nova senha</label><input type="password" id="confirmar-senha" required minlength="8" autocomplete="new-password" placeholder="Repita a nova senha"></div>
+        </div>
+        <button class="settings-button" type="submit">Alterar senha</button>
+        <p class="form-note">A alteração real da senha precisa ser validada e salva pelo backend. Não armazene senhas diretamente no frontend.</p>
+      </form>
+    </section>
+    <p id="mensagem" class="settings-message" role="status" aria-live="polite"></p>
+  </main>
 </div>
-
+<script src="../js/configuracoes.js"></script>
 </body>
 </html>
