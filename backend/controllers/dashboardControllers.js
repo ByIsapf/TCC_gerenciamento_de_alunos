@@ -11,17 +11,21 @@ async function resumoDashboard(req, res) {
         const [[frequenciaResult]] = await db.query(
             `SELECT
                 SUM(status = 'presente') AS presentes,
-                SUM(status = 'atrasado') AS atrasados
+                SUM(status = 'atrasado') AS atrasados,
+                SUM(status = 'falta') AS faltas
              FROM frequencias
              WHERE data = CURDATE()`
         );
 
+        const [[turmasResult]] = await db.query("SELECT COUNT(*) AS total FROM turmas");
         const totalAlunos = Number(alunosResult.total || 0);
         const presentes = Number(frequenciaResult.presentes || 0);
         const atrasados = Number(frequenciaResult.atrasados || 0);
 
         // Alunos sem registro de frequência hoje são considerados ausentes.
-        const ausentes = Math.max(totalAlunos - presentes - atrasados, 0);
+        const faltas = Number(frequenciaResult.faltas || 0);
+        const semRegistro = Math.max(totalAlunos - presentes - atrasados - faltas, 0);
+        const ausentes = faltas + semRegistro;
 
         const percentual = (valor) => {
             if (totalAlunos === 0) return 0;
@@ -30,12 +34,12 @@ async function resumoDashboard(req, res) {
 
         res.json({
             totalAlunos,
-            // O projeto atual não possui tabela de turmas no banco.
-            // Mantemos o número exibido no dashboard até a criação dessa tabela.
-            totalTurmas: 12,
+            totalTurmas: Number(turmasResult.total || 0),
 
             presentes,
             ausentes,
+            faltas,
+            semRegistro,
             atrasados,
 
             percentuais: {

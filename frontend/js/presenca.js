@@ -1,126 +1,237 @@
-// =========================
-// ELEMENTOS DA PÁGINA
-// =========================
 
-const statusIcon = document.getElementById("status-icon");
-const statusTitulo = document.getElementById("status-titulo");
-const statusMensagem = document.getElementById("status-mensagem");
-
-const dadosPresenca = document.getElementById("dados-presenca");
-
-const nomeAluno = document.getElementById("nome-aluno");
-const dataPresenca = document.getElementById("data-presenca");
-const horarioPresenca = document.getElementById("horario-presenca");
+/* =========================================
+   SISTEMA G.E.A
+   CONFIRMAÇÃO DE PRESENÇA DO ALUNO
+   ========================================= */
 
 
-// =========================
-// PEGA O TOKEN DA URL
-// =========================
+/* =========================================
+   OBTENÇÃO DO TOKEN DO QR CODE
+   ========================================= */
 
-const parametros = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(location.search);
+const token = params.get("token");
 
-const token = parametros.get("token");
+
+/* =========================================
+   ELEMENTOS DA INTERFACE
+   ========================================= */
+
+const titulo = document.getElementById("status-titulo");
+const msg = document.getElementById("status-mensagem")
+const det = document.getElementById("dados-presenca");
+const icone = document.getElementById("status-icon");
 
 
-// =========================
-// REGISTRA A PRESENÇA
-// =========================
+/* =========================================
+   OCULTAR DADOS INICIALMENTE
+   ========================================= */
 
-async function registrarPresenca() {
+det.style.display = "none";
 
-    if (!token) {
+/* =========================================
+   DEFINIR ÍCONE DE STATUS
+   ========================================= */
 
-        mostrarErro(
+function definirIcone(sucesso) {
+    icone.textContent = sucesso ? "✓" : "✕";
+    icone.classList.toggle(
+        "status-sucesso",
+        sucesso
+    );
+
+    icone.classList.toggle(
+        "status-erro",
+        !sucesso
+    );
+
+}
+
+
+/* =========================================
+   EXIBIR MENSAGENS NA TELA
+   ========================================= */
+
+function informar(t, m) {
+    titulo.textContent = t;
+    msg.textContent = m;
+}
+
+
+/* =========================================
+   CONFIRMAR ENTRADA DO ALUNO
+   ========================================= */
+
+async function confirmar() {
+
+
+    /* =====================================
+       VALIDAR TOKEN DO QR CODE
+       ===================================== */
+
+    if (!token || !/^[a-f0-9]{64}$/.test(token)) {
+        definirIcone(false);
+        informar(
             "QR Code inválido",
-            "Não foi possível identificar este QR Code."
+            "Solicite outro código à secretaria."
         );
-
         return;
     }
 
 
+    /* =====================================
+       ENVIAR CONFIRMAÇÃO AO SERVIDOR
+       ===================================== */
+
     try {
+        const r = await fetch("/qr/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                token
+            })
+        });
 
-        const resposta = await fetch(
-            `/qr/registrar?token=${encodeURIComponent(token)}`
-        );
+        /* =================================
+           RECEBER RESPOSTA DO SERVIDOR
+           ================================= */
 
-        const dados = await resposta.json();
+        const d = await r.json();
 
+        /* =================================
+           VERIFICAR AUTENTICAÇÃO DO ALUNO
+           ================================= */
 
-        // =========================
-        // PRESENÇA REGISTRADA
-        // =========================
+        if (
+            r.status === 401 &&
+            d.mensagem?.includes("Entre com RA")
+        ) {
 
-        if (resposta.ok) {
+            /* SALVAR TOKEN PENDENTE */
 
-            statusIcon.textContent = "✓";
-
-            statusTitulo.textContent =
-                "Presença registrada!";
-
-            statusMensagem.textContent =
-                "Sua presença foi registrada com sucesso.";
-
-
-            nomeAluno.textContent =
-                dados.aluno.nome;
-
-            dataPresenca.textContent =
-                dados.presenca.data;
-
-            horarioPresenca.textContent =
-                dados.presenca.horario;
-
-        }
-
-        // =========================
-        // ALGUM ERRO
-        // =========================
-
-        else {
-
-            mostrarErro(
-                "Não foi possível registrar",
-                dados.mensagem
+            sessionStorage.setItem(
+                "gea_qr_pendente",
+                token
             );
 
+
+            /* EXIBIR MENSAGEM DE LOGIN */
+
+            definirIcone(false);
+            informar(
+                "Login necessário",
+                "Entre com RA e senha para confirmar sua identidade."
+            );
+
+            /* CRIAR LINK PARA LOGIN */
+
+            const a = document.createElement("a");
+            a.href = "/index.html";
+            a.textContent = "Entrar como aluno";
+            msg.after(a);
+            return;
         }
 
+        /* =================================
+           VERIFICAR ERROS DO SERVIDOR
+           ================================= */
 
-    } catch (erro) {
+        if (!r.ok) {
+            throw Error(d.mensagem);
+        }
 
-        console.error(
-            "Erro ao registrar presença:",
-            erro
+        /* =================================
+           CONFIRMAR PRESENÇA
+           ================================= */
+
+        definirIcone(true);
+        informar(
+            "Entrada confirmada!",
+            d.presenca.status === "atrasado"
+                ? "Atraso registrado."
+                : "Presença registrada."
         );
 
-        mostrarErro(
-            "Erro de conexão",
-            "Não foi possível conectar ao servidor."
+        /* =================================
+           EXIBIR DADOS DA PRESENÇA
+           ================================= */
+
+        det.style.display = "";
+
+        /* NOME DO ALUNO */
+
+        document.getElementById(
+            "nome-aluno"
+        ).textContent = d.aluno.nome;
+
+        /* DATA DA PRESENÇA */
+
+        document.getElementById(
+            "data-presenca"
+        ).textContent = new Date().toLocaleDateString(
+            "pt-BR"
         );
 
+        /* HORÁRIO DA PRESENÇA */
+
+        document.getElementById(
+            "horario-presenca"
+        ).textContent = d.presenca.horario;
+
+        /* =================================
+           REMOVER TOKEN DA URL
+           ================================= */
+
+        history.replaceState(
+            null,
+            "",
+            "/presenca.html"
+        );
     }
 
+    /* =====================================
+       TRATAMENTO DE ERROS
+       ===================================== */
+
+    catch (e) {
+        definirIcone(false);
+        informar(
+            "Não foi possível confirmar",
+            e.message
+        );
+    }
 }
 
+/* =========================================
+   CRIAR BOTÃO DE CONFIRMAÇÃO
+   ========================================= */
 
-// =========================
-// MOSTRA ERRO NA TELA
-// =========================
+const btn = document.createElement("button");
+btn.textContent = "Confirmar minha entrada";
 
-function mostrarErro(titulo, mensagem) {
+/* =========================================
+   EVENTO DO BOTÃO
+   ========================================= */
 
-    statusIcon.textContent = "×";
+btn.onclick = () => {
+    btn.disabled = true;
+    confirmar();
+};
 
-    statusTitulo.textContent = titulo;
+/* =========================================
+   ADICIONAR BOTÃO À PÁGINA
+   ========================================= */
 
-    statusMensagem.textContent = mensagem;
+msg.after(btn);
 
-    dadosPresenca.style.display = "none";
+/* =========================================
+   ESTADO INICIAL DA PÁGINA
+   ========================================= */
 
-}
-
-
-// Executa quando a página abre
-registrarPresenca();
+icone.textContent = "•";
+informar(
+    "Confirmar entrada",
+    "Verifique se você está conectado à sua conta de aluno e confirme."
+);

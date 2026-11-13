@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>G.E.A PCL</title>
-
-    <link rel="stylesheet" href="css/style.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>G.E.A PCL</title>
+ <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
     <!-- Fundo -->
@@ -78,6 +74,10 @@
                     Registrar Acesso
                 </button>
 
+                <button id="btn-logout-aluno" type="button" hidden style="display:none;width:100%;margin-top:12px;padding:12px;border:1px solid #294e68;border-radius:8px;background:#fff;color:#294e68;font-weight:700;cursor:pointer;">Sair da conta</button>
+
+                <p id="aviso-login" role="alert" aria-live="polite" style="display:none;color:#991b1b;background:#fee2e2;padding:12px;border-radius:8px;margin-top:12px;font-weight:600;"></p>
+
             </form>
 
             <!-- Link para a secretaria -->
@@ -106,8 +106,7 @@
                 </h2>
 
                 <p>
-                    Faça login para gerar
-                    seu código de acesso.
+                    Entre com RA e senha e aguarde a gestão liberar seu QR Code.
                 </p>
 
                 <!-- Espaço reservado para o QR -->
@@ -122,6 +121,7 @@
                     </span>
 
                 </div>
+                <p id="qr-contador" role="status" aria-live="off" style="font-weight:700;margin-top:12px"></p>
 
             </div>
 
@@ -130,6 +130,7 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="config-publica.js"></script>
     <script src="js/script.js"></script>
 
 </body>

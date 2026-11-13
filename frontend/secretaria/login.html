@@ -6,7 +6,6 @@
   <title>Secretaria | Login</title>
   <link rel="stylesheet" href="../css/secretaria.css">
 </head>
-
 <body class="login-page">
 
   <!-- Fundo da página -->
@@ -128,28 +127,10 @@
        JAVASCRIPT
        ========================= -->
   <script>
-
-    /*
-      Seleciona o formulário da secretaria.
-    */
-    document
-      .getElementById("secretaryForm")
-      .addEventListener("submit", (e) => {
-
-        /*
-          Impede o recarregamento da página.
-        */
-        e.preventDefault();
-
-        /*
-          Atualmente o login é apenas visual.
-          Futuramente será integrado ao backend
-          e ao banco de dados.
-        */
-        window.location.href = "../gestao/dashboard.html";
-
-      });
-
+    document.getElementById("secretaryForm").addEventListener("submit",async e=>{
+      e.preventDefault();const msg=document.getElementById("secretaryMessage");
+      try{const r=await fetch("/auth/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:document.getElementById("email").value,senha:document.getElementById("password").value})});const d=await r.json();if(!r.ok)throw Error(d.mensagem);location.href="../gestao/dashboard.html";}catch(err){msg.textContent=err.message||"Erro de conexão.";}
+    });
   </script>
 
 </body>

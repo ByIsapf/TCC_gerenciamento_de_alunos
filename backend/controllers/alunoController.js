@@ -1,98 +1,135 @@
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
-
 const db = require("../config/database");
 
 async function loginAluno(req, res) {
 
-    const { ra, senha } = req.body;
+    const { ra, senha } = req.body || {};
+
+    if (
+        typeof ra !== "string" ||
+        typeof senha !== "string"
+    ) {
+
+        return res.status(400).json({
+            mensagem: "Informe RA e senha."
+        });
+    }
 
     try {
-
-        // Procura o aluno pelo RA
-        const [alunos] = await db.query(
-            "SELECT * FROM alunos WHERE ra = ?",
+        const [rows] = await db.query(
+            "SELECT id, ra, nome, senha FROM alunos WHERE ra = ?",
             [ra]
         );
 
-        // Se o aluno não existir
-        if (alunos.length === 0) {
+        if (
+            !rows.length ||
+            !(await bcrypt.compare(senha, rows[0].senha))
+        ) {
 
+            res.locals.registrarFalhaLogin?.();
             return res.status(401).json({
                 mensagem: "RA ou senha inválidos."
             });
-
         }
 
-        const aluno = alunos[0];
+        res.locals.limparFalhasLogin?.();
 
-        // Compara a senha digitada com a senha criptografada
-        const senhaValida = await bcrypt.compare(
-            senha,
-            aluno.senha
-        );
+        const token = crypto
+            .randomBytes(32)
+            .toString("hex");
 
-        // Se a senha estiver errada
-        if (!senhaValida) {
+        const hash = crypto
+            .createHash("sha256")
+            .update(token)
+            .digest("hex");
 
-            return res.status(401).json({
-                mensagem: "RA ou senha inválidos."
-            });
-
-        }
-
-        // =========================
-        // GERA O TOKEN DO QR CODE
-        // =========================
-
-        const token = crypto.randomBytes(32).toString("hex");
-
-        // Token válido por 5 minutos
-        const expiracao = new Date(
-            Date.now() + 5 * 60 * 1000
-        );
-
-        // Salva o token no banco
         await db.query(
-            `INSERT INTO qr_tokens
-            (aluno_id, token, expiracao)
-            VALUES (?, ?, ?)`,
+            `INSERT INTO sessoes_aluno
+             (aluno_id, token_hash, expiracao)
+             VALUES (
+                 ?,
+                 ?,
+                 DATE_ADD(NOW(), INTERVAL 2 HOUR)
+             )`,
             [
-                aluno.id,
-                token,
-                expiracao
+                rows[0].id,
+                hash
             ]
         );
 
-        // Envia a resposta para o frontend
-        res.json({
-
-            mensagem: "Login realizado com sucesso!",
-
-            aluno: {
-                id: aluno.id,
-                ra: aluno.ra,
-                nome: aluno.nome
-            },
-
-            token: token
-
-        });
-
-    } catch (erro) {
-
-        console.error(
-            "Erro no login:",
-            erro
+        res.setHeader(
+            "Set-Cookie",
+            `gea_aluno=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=7200${
+                process.env.NODE_ENV === "production"
+                    ? "; Secure"
+                    : ""
+            }`
         );
 
-        res.status(500).json({
-            mensagem: "Erro interno do servidor."
+        res.json({
+            mensagem: "Login realizado.",
+            aluno: {
+                id: rows[0].id,
+                ra: rows[0].ra,
+                nome: rows[0].nome
+            }
         });
+    }
 
+    catch (e) {
+        console.error(e);
+        res.status(500).json({
+            mensagem:
+                "Erro ao autenticar aluno. Confira a migração do banco."
+        });
+    }
+}
+
+async function logoutAluno(req, res) {
+
+    try {
+        const token = (req.headers.cookie || "")
+            .split(";")
+            .map(x => x.trim())
+            .find(x => x.startsWith("gea_aluno="))
+            ?.slice(10);
+
+        if (token) {
+            const hash = crypto
+                .createHash("sha256")
+                .update(token)
+                .digest("hex");
+
+            await db.query(
+                "DELETE FROM sessoes_aluno WHERE token_hash = ?",
+                [hash]
+            );
+        }
+
+        res.setHeader(
+            "Set-Cookie",
+            `gea_aluno=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0${
+                process.env.NODE_ENV === "production"
+                    ? "; Secure"
+                    : ""
+            }`
+        );
+
+        res.json({
+            mensagem: "Sessão do aluno encerrada."
+        });
+    }
+
+    catch (e) {
+        console.error(e);
+        res.status(500).json({
+            mensagem: "Erro ao encerrar sessão."
+        });
     }
 }
 
 module.exports = {
-    loginAluno
+    loginAluno,
+    logoutAluno
 };

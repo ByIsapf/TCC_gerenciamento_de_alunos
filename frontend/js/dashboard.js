@@ -14,7 +14,7 @@ async function carregarDashboard() {
 
         document.getElementById("presentes-numero").textContent = dados.presentes;
         document.getElementById("resumo-frequencia").textContent =
-            `${dados.ausentes} ausentes • ${dados.atrasados} atrasados`;
+            `${dados.faltas ?? 0} faltas confirmadas • ${dados.semRegistro ?? 0} sem registro • ${dados.atrasados} atrasados`;
 
         atualizarIndicador("presentes", dados.presentes, dados.percentuais.presentes);
         atualizarIndicador("ausentes", dados.ausentes, dados.percentuais.ausentes);
