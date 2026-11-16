@@ -1,103 +1,654 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>G.E.A PCL | Configurações</title>
-  <link rel="stylesheet" href="../css/gestao.css">
-  <link rel="stylesheet" href="../css/configuracoes.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>G.E.A | Configurações</title>
+ <link rel="stylesheet"href="../css/gestao.css">
+ <link rel="stylesheet" href="../css/configuracoes-entrada.css">
+ <link rel="stylesheet" href="../css/cadastros.css">
 </head>
 <body>
 
-<div class="dashboard">
-  <aside class="sidebar">
-    <div class="logo"><div class="gea">G.E.A</div><span>Pedro Casemiro Leite</span></div>
-    <nav class="menu">
-      <a href="dashboard.html">Dashboard</a>
-      <a href="turmas.html">Turmas</a>
-      <a href="configuracoes.html" class="active">Configurações</a>
-    </nav>
-    <div class="button-exit"><a href="../secretaria/login.html" class="exit-menu">Sair</a></div>
-  </aside>
+    <!-- =========================================
+         ESTRUTURA PRINCIPAL DO DASHBOARD
+         ========================================= -->
 
-  <main class="content settings-content">
-    <header class="top">
-      <div class="page-title">
-        <span>ADMINISTRAÇÃO</span>
-        <h1>Configurações</h1>
-        <p>Gerencie os alunos das turmas e a segurança da conta da gestão.</p>
-      </div>
-      <div class="user-info"><strong>Gestão</strong><small>P.C.L</small></div>
-    </header>
+    <div class="dashboard">
 
-    <section class="settings-section">
-      <div class="section-heading">
-        <span>CADASTRO ESCOLAR</span>
-        <h2>Adicionar aluno à turma</h2>
-      </div>
-      <form id="form-adicionar-aluno" class="settings-card">
-        <div class="form-grid">
-          <div class="field"><label for="nome-aluno">Nome completo</label><input id="nome-aluno" name="nome" required maxlength="120" placeholder="Digite o nome do aluno"></div>
-          <div class="field"><label for="ra-aluno">RA (Registro do Aluno)</label><input id="ra-aluno" name="ra" required maxlength="30" placeholder="Digite o RA"></div>
-          <div class="field"><label for="turma-aluno">Turma</label><select id="turma-aluno" name="turma" required><option value="">Selecione a turma</option>
 
-            <option>1A</option><option>1B</option><option>1C</option><option>1D</option>
-            <option>2A</option><option>2B</option><option>2C</option><option>2D</option>
-            <option>3A</option><option>3B</option><option>3C</option><option>3D</option>
+        <!-- =====================================
+             MENU LATERAL
+             ===================================== -->
 
-          </select>
-          </div>
-        </div>
-        <button class="settings-button" type="submit">+ Adicionar aluno</button>
-        <p class="form-note">O cadastro de novos alunos deve ser conectado ao endpoint de cadastro do backend. A lista abaixo carrega os alunos já existentes no MySQL.</p>
-      </form>
-    </section>
+        <aside class="sidebar" id="gea-sidebar">
 
-    <section class="settings-section">
-      <div class="section-heading">
-        <span>GERENCIAMENTO</span>
-        <h2>Alunos já cadastrados</h2>
-      </div>
-      <div class="settings-card">
-        <div class="list-toolbar">
-          <label for="filtro-turma">Filtrar por turma</label>
-          <select id="filtro-turma"><option value="">Todas as turmas</option>
+            <!-- LOGO DO SISTEMA -->
 
-            <option>1A</option><option>1B</option><option>1C</option><option>1D</option>
-            <option>2A</option><option>2B</option><option>2C</option><option>2D</option>
-            <option>3A</option><option>3B</option><option>3C</option><option>3D</option>
-            
-          </select>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Aluno</th><th>RA</th><th>Turma</th><th>Ação</th></tr></thead>
-            <tbody id="lista-alunos"><tr class="empty-row"><td colspan="4">Carregando alunos cadastrados...</td></tr></tbody>
-          </table>
-        </div>
-        <p class="form-note">A exclusão remove o aluno do banco de dados e não pode ser desfeita. Confirme cuidadosamente antes de excluir. 
-          A tabela atual do banco não possui coluna de turma, então a turma será exibida como “Não definida”.</p>
-      </div>
-    </section>
+            <div class="logo">
 
-    <section class="settings-section">
-      <div class="section-heading">
-        <span>SEGURANÇA</span>
-        <h2>Alterar senha da gestão</h2>
-      </div>
-      <form id="form-senha" class="settings-card password-card">
-        <div class="form-grid">
-          <div class="field"><label for="senha-atual">Senha atual</label><input type="password" id="senha-atual" required autocomplete="current-password" placeholder="Digite a senha atual"></div>
-          <div class="field"><label for="nova-senha">Nova senha</label><input type="password" id="nova-senha" required minlength="8" autocomplete="new-password" placeholder="Mínimo de 8 caracteres"></div>
-          <div class="field"><label for="confirmar-senha">Confirmar nova senha</label><input type="password" id="confirmar-senha" required minlength="8" autocomplete="new-password" placeholder="Repita a nova senha"></div>
-        </div>
-        <button class="settings-button" type="submit">Alterar senha</button>
-        <p class="form-note">A alteração real da senha precisa ser validada e salva pelo backend. Não armazene senhas diretamente no frontend.</p>
-      </form>
-    </section>
-    <p id="mensagem" class="settings-message" role="status" aria-live="polite"></p>
-  </main>
-</div>
-<script src="../js/configuracoes.js"></script>
+                <div class="gea">
+                    G.E.A
+                </div>
+
+                <span>Pedro Casemiro Leite</span>
+
+            </div>
+
+
+            <!-- BOTÃO DO MENU MOBILE -->
+
+            <button
+                type="button"
+                class="mobile-menu-toggle"
+                aria-controls="gea-mobile-nav"
+                aria-expanded="false"
+                aria-label="Abrir menu de navegação"
+            >
+                ☰
+            </button>
+
+
+            <!-- NAVEGAÇÃO PRINCIPAL -->
+
+            <div
+                class="mobile-menu-panel"
+                id="gea-mobile-nav"
+            >
+
+                <nav class="menu">
+
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
+
+                    <a href="turmas.html">
+                        Turmas
+                    </a>
+
+                    <a
+                        href="configuracoes.html"
+                        class="active"
+                        aria-current="page"
+                    >
+                        Configurações
+                    </a>
+
+                </nav>
+
+
+                <!-- BOTÃO SAIR -->
+
+                <div class="button-exit">
+
+                    <a
+                        href="../secretaria/login.html"
+                        class="exit-menu"
+                        id="sair"
+                    >
+                        Sair
+                    </a>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================
+             CONTEÚDO PRINCIPAL
+             ===================================== -->
+
+        <main class="content">
+
+
+            <!-- =================================
+                 CABEÇALHO DA PÁGINA
+                 ================================= -->
+
+            <header class="top">
+
+                <div class="page-title">
+
+                    <span>
+                        G.E.A / Secretaria
+                    </span>
+
+                    <h1>Configurações</h1>
+
+                    <p>
+                        Gerencie os horários e o registro
+                        de entrada dos alunos.
+                    </p>
+
+                </div>
+
+
+                <!-- INFORMAÇÕES DO USUÁRIO -->
+
+                <div class="user-info">
+
+                    <strong>Gestão</strong>
+
+                    <small>P.C.L</small>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================
+                 REGISTRO DE ENTRADA
+                 ================================= -->
+
+            <section
+                class="config-panel"
+                aria-labelledby="registro-title"
+            >
+
+                <div class="section-heading">
+
+                    <span>
+                        CONTROLE DE ENTRADA
+                    </span>
+
+                    <h2 id="registro-title">
+                        Registro de entrada
+                    </h2>
+
+                    <p>
+                        Identifique o aluno pelo RA
+                        e libere um QR Code exclusivo
+                        para ele.
+                    </p>
+
+                </div>
+
+
+                <!-- LINK PARA REGISTRAR ENTRADA -->
+
+                <a
+                    href="registrar-entrada.html"
+                    class="config-register-link"
+                >
+
+                    <strong>
+                        ▣ Registrar entrada
+                    </strong>
+
+                    <span aria-hidden="true">
+                        →
+                    </span>
+
+                </a>
+
+            </section>
+
+
+            <!-- =================================
+                 CADASTRO DE NOVOS ALUNOS
+                 ================================= -->
+
+            <section
+                class="alunos-section cadastro-aluno config-panel gea-form-card"
+            >
+
+                <div class="section-heading">
+
+                    <h2>
+                        Cadastrar novo aluno
+                    </h2>
+
+                    <p>
+                        Cadastre o aluno para acessar
+                        o sistema de presença.
+                    </p>
+
+                </div>
+
+
+                <!-- FORMULÁRIO DE CADASTRO -->
+
+                <form
+                    id="formCadastroAluno"
+                    class="form-linha gea-fields"
+                >
+
+
+                    <!-- NOME COMPLETO -->
+
+                    <div class="gea-field">
+
+                        <label for="cadNome">
+                            Nome completo
+                        </label>
+
+                        <input
+                            id="cadNome"
+                            autocomplete="name"
+                            minlength="2"
+                            maxlength="100"
+                            placeholder="Ex.: Maria Oliveira"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- REGISTRO DO ALUNO -->
+
+                    <div class="gea-field">
+
+                        <label for="cadRa">
+                            RA
+                        </label>
+
+                        <input
+                            id="cadRa"
+                            inputmode="numeric"
+                            maxlength="20"
+                            pattern="[0-9]{4,20}"
+                            placeholder="Somente números"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- SENHA INICIAL -->
+
+                    <div class="gea-field">
+
+                        <label for="cadSenha">
+                            Senha inicial
+                        </label>
+
+                        <input
+                            id="cadSenha"
+                            type="password"
+                            autocomplete="new-password"
+                            minlength="8"
+                            maxlength="72"
+                            placeholder="Mínimo de 8 caracteres"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- SELECIONAR TURMA -->
+
+                    <div class="gea-field">
+
+                        <label for="cadTurma">
+                            Turma (opcional)
+                        </label>
+
+                        <select id="cadTurma">
+
+                            <option value="">
+                                Sem turma
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- BOTÃO CADASTRAR -->
+
+                    <button
+                        id="btnCadastrarAluno"
+                        type="submit"
+                    >
+                        Cadastrar aluno
+                    </button>
+
+                </form>
+
+
+                <!-- MENSAGEM DO CADASTRO -->
+
+                <p
+                    id="mensagemCadastroAluno"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </section>
+
+
+            <!-- =================================
+                 VINCULAR ALUNO A UMA TURMA
+                 ================================= -->
+
+            <section
+                class="alunos-section config-panel gea-form-card"
+            >
+
+                <div class="section-heading">
+
+                    <h2>
+                        Vincular aluno a uma turma
+                    </h2>
+
+                </div>
+
+
+                <!-- FORMULÁRIO DE VÍNCULO -->
+
+                <form
+                    id="formVinculo"
+                    class="form-linha gea-fields"
+                >
+
+
+                    <!-- SELECIONAR ALUNO -->
+
+                    <div class="gea-field">
+
+                        <label for="alunoVinculo">
+                            Aluno
+                        </label>
+
+                        <select
+                            id="alunoVinculo"
+                            required
+                        ></select>
+
+                    </div>
+
+
+                    <!-- SELECIONAR TURMA -->
+
+                    <div class="gea-field">
+
+                        <label for="turmaVinculo">
+                            Turma
+                        </label>
+
+                        <select id="turmaVinculo">
+
+                            <option value="">
+                                Sem turma
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- BOTÃO SALVAR VÍNCULO -->
+
+                    <button type="submit">
+                        Salvar vínculo
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- =================================
+                 CADASTRO DE TURMAS
+                 ================================= -->
+
+            <section
+                class="turmas-section config-panel gea-form-card"
+            >
+
+                <div class="section-heading">
+
+                    <h2>
+                        Cadastrar turmas
+                    </h2>
+
+                </div>
+
+
+                <!-- FORMULÁRIO DE TURMAS -->
+
+                <form
+                    id="formTurma"
+                    class="form-linha gea-fields"
+                >
+
+
+                    <!-- NOME DA TURMA -->
+
+                    <div class="gea-field">
+
+                        <label for="nomeTurma">
+                            Nome da turma
+                        </label>
+
+                        <input
+                            id="nomeTurma"
+                            minlength="2"
+                            maxlength="100"
+                            placeholder="Ex.: 3º A"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- BOTÃO CADASTRAR TURMA -->
+
+                    <button type="submit">
+                        Cadastrar turma
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- =================================
+                 GERENCIAMENTO DE TURMAS
+                 ================================= -->
+
+            <section
+                class="config-panel gea-manage-card"
+                aria-labelledby="gerenciar-title"
+            >
+
+                <div class="section-heading">
+
+                    <h2 id="gerenciar-title">
+                        Gerenciar turmas existentes
+                    </h2>
+
+                </div>
+
+
+                <!-- SELECIONAR TURMA -->
+
+                <div class="gea-field">
+
+                    <label for="turmaGerenciar">
+                        Selecionar turma
+                    </label>
+
+                    <select id="turmaGerenciar">
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- AÇÕES DA TURMA -->
+
+                <div class="acoes-turma">
+
+                    <button
+                        id="editarTurma"
+                        type="button"
+                    >
+                        Renomear turma
+                    </button>
+
+                    <button
+                        id="excluirTurma"
+                        type="button"
+                    >
+                        Excluir turma vazia
+                    </button>
+
+                </div>
+
+
+                <!-- MENSAGENS DO GERENCIAMENTO -->
+
+                <p
+                    id="mensagemTurmas"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </section>
+
+
+            <!-- =================================
+                 CONFIGURAÇÕES DE HORÁRIOS
+                 ================================= -->
+
+            <section
+                class="config-panel"
+                aria-labelledby="config-title"
+            >
+
+                <div class="section-heading">
+
+                    <span>
+                        HORÁRIOS DA ESCOLA
+                    </span>
+
+                    <h2 id="config-title">
+                        Configurações de entrada
+                    </h2>
+
+                    <p>
+                        Defina os horários usados no
+                        registro de presença dos alunos.
+                    </p>
+
+                </div>
+
+
+                <!-- FORMULÁRIO DE CONFIGURAÇÕES -->
+
+                <form
+                    id="config-form"
+                    class="config-form"
+                >
+
+
+                    <!-- ABERTURA DA ESCOLA -->
+
+                    <label for="entrada">
+
+                        Abertura da escola
+
+                        <input
+                            id="entrada"
+                            type="time"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- TOLERÂNCIA PARA ATRASO -->
+
+                    <label for="tolerancia">
+
+                        Tolerância para atraso (minutos)
+
+                        <input
+                            id="tolerancia"
+                            type="number"
+                            min="0"
+                            max="180"
+                            step="1"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- ENCERRAMENTO DO REGISTRO -->
+
+                    <label for="encerramento">
+
+                        Horário de encerramento do registro
+
+                        <input
+                            id="encerramento"
+                            type="time"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- BOTÃO SALVAR -->
+
+                    <button type="submit">
+                        Salvar configurações
+                    </button>
+
+                </form>
+
+
+                <!-- MENSAGEM DAS CONFIGURAÇÕES -->
+
+                <p
+                    id="mensagem"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+
+                <!-- INFORMAÇÕES COMPLEMENTARES -->
+
+                <p class="nota">
+                    O horário é obtido no servidor MySQL.
+                    O QR Code continua válido por 60 segundos
+                    e somente a secretaria pode gerá-lo.
+                </p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================
+         IMPORTAÇÃO DOS ARQUIVOS JAVASCRIPT
+         ========================================= -->
+
+    <script
+        src="../js/configuracoes-entrada.js"
+        defer
+    ></script>
+
+    <script
+        src="../js/mobile-menu.js"
+        defer
+    ></script>
+
+    <script
+        src="../js/cadastros.js"
+        defer
+    ></script>
+
 </body>
+
 </html>

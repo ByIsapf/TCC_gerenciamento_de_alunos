@@ -526,3 +526,5 @@ main {
     }
 
 }
+/* QR liberado após login: centralizado na área da página inicial */
+#qrcode img,#qrcode canvas{max-width:100%;height:auto!important;margin:auto;}

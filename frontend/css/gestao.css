@@ -608,3 +608,39 @@ body {
         flex-direction: column;
     }
 }
+
+
+/* Menu compacto para celular; o layout desktop permanece inalterado. */
+.mobile-menu-toggle { display:none; }
+.mobile-menu-panel { display:contents; }
+@media (max-width:700px) {
+  .sidebar {
+    position:relative; inset:auto; width:auto; height:auto; min-height:0;
+    margin:12px 12px 0; padding:12px 16px; border-radius:16px;
+    display:flex; flex-direction:row; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:8px;
+  }
+  .sidebar .logo { margin:0; padding:0; text-align:left; flex:1; }
+  .sidebar .gea { font-size:26px; letter-spacing:2px; }
+  .sidebar .logo span, .sidebar .logo small { font-size:11px; margin-top:3px; }
+  .mobile-menu-toggle {
+    display:block; flex:none; width:44px; height:44px; padding:0;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3);
+    border-radius:10px; color:white; font-size:24px; cursor:pointer;
+  }
+  .mobile-menu-toggle:focus-visible { outline:3px solid white; outline-offset:2px; }
+  .mobile-menu-panel { display:none; flex-basis:100%; width:100%; padding-top:10px; }
+  .sidebar.menu-open .mobile-menu-panel { display:block; }
+  .sidebar .menu, .sidebar nav { display:flex; flex-direction:column; gap:6px; }
+  .sidebar .menu a, .sidebar nav a { flex:none; text-align:left; }
+  .sidebar .button-exit, .sidebar .sair { margin-top:12px; }
+  .content { width:100%; margin-left:0; padding:22px 15px 32px; }
+  .top { gap:12px; padding-bottom:18px; }
+  .overview { margin-top:18px; gap:12px; }
+  .main-stat,.small-stat,.attendance { min-height:0; padding:20px; }
+  .percentage-card { min-height:0; padding:20px; }
+  .quick-link { max-width:100%; }
+  .quick-access[aria-label="Registro de presença"] > .quick-link {
+    display:flex !important; width:100%; justify-content:space-between;
+  }
+}

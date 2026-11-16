@@ -252,3 +252,6 @@ body {
     }
 
 }
+/* Estado visual do resultado do QR Code */
+.status-icon.status-sucesso { background: #e8f4ed; color: #34875a; }
+.status-icon.status-erro { background: #fde8e8; color: #c62828; }

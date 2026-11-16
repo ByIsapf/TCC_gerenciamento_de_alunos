@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>G.E.A | Dashboard</title>
-
-    <link rel="stylesheet" href="../css/gestao.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>G.E.A | Dashboard</title>
+ <link rel="stylesheet" href="../css/gestao.css">
 </head>
-
 <body>
 
     <div class="dashboard">
 
-        <aside class="sidebar">
+        <aside class="sidebar" id="gea-sidebar">
 
             <div class="logo">
                 <div class="gea">G.E.A</div>
                 <span>Pedro Casemiro Leite</span>
             </div>
 
+            <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="gea-mobile-nav" aria-label="Abrir menu de navegação">☰</button>
+            <div class="mobile-menu-panel" id="gea-mobile-nav">
             <nav class="menu">
                 <a href="dashboard.html" class="active">Dashboard</a>
                 <a href="turmas.html">Turmas</a>
@@ -28,7 +26,7 @@
             </nav>
 
             <div class="button-exit">
-                <a href="../secretaria/login.html" class="exit-menu">Sair</a>
+                <a href="../secretaria/login.html" class="exit-menu" onclick="event.preventDefault();fetch('/auth/logout',{method:'POST'}).finally(()=>location.href='../secretaria/login.html')">Sair</a>
             </div>
 
         </aside>
@@ -121,7 +119,7 @@
                             <span id="bar-ausentes"></span>
                         </div>
 
-                        <p><strong id="count-ausentes">0</strong> alunos ainda não registrados.</p>
+                        <p><strong id="count-ausentes">0</strong> alunos sem presença confirmada (faltas e sem registro).</p>
                     </article>
 
                     <article class="percentage-card">
@@ -184,5 +182,6 @@
 
     <script src="../js/dashboard.js"></script>
 
+    <script src="../js/mobile-menu.js" defer></script>
 </body>
 </html>
