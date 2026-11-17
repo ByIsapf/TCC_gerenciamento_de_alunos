@@ -2,8 +2,11 @@ const express = require("express");
 
 const router = express.Router();
 
-const { loginAluno } = require("../controllers/alunoController");
+const { loginAluno, logoutAluno } = require("../controllers/alunoController");
+const limitarLogin = require("../middleware/limitarLogin");
+const alunoAuth = require("../middleware/alunoAuth");
 
-router.post("/login", loginAluno);
+router.post("/login", limitarLogin("aluno"), loginAluno);
+router.post("/logout", logoutAluno);
 
 module.exports = router;

@@ -4,7 +4,7 @@ const router = express.Router();
 
 const {
     resumoDashboard
-} = require("../controllers/dashboardController");
+} = require("../controllers/dashboardControllers");
 
 router.get("/resumo", resumoDashboard);
 
