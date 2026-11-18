@@ -1,136 +1,121 @@
-/* ========================================
+/* =========================
    RESET
-======================================== */
-
+   ========================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-/* ========================================
-   BODY
-======================================== */
-
+/* =========================
+   BODY / FUNDO - PADRÃO G.E.A
+   ========================= */
 body {
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
-    background: linear-gradient(
-        135deg,
-        #020b18,
-        #0d47a1,
-        #1976d2
-    );
-    color: #111;
+    color: #172333;
+    background: #dce5ed;
 }
-
-
-/* ========================================
-   ESTRUTURA PRINCIPAL
-======================================== */
 
 .turmas {
     min-height: 100vh;
+    position: relative;
     display: flex;
 }
 
+.turmas::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("../assets/img/Canva.img.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
 
-/* ========================================
+.turmas::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(220, 229, 237, 0.78);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* =========================
    MENU LATERAL
-======================================== */
-
-aside {
+   ========================= */
+.sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px;
+    width: 245px;
     height: 100vh;
-    background: linear-gradient(
-        160deg,
-        #020b18,
-        #0d47a1,
-        #1976d2
-    );
-
-    color: white;
+    padding: 35px 20px;
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    padding: 25px 16px;
-    z-index: 100;
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.25);
+    background: rgba(29, 55, 76, 0.95);
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    animation: focoSuave 0.6s ease-out both;
 }
 
-
-/* ========================================
-   LOGO
-======================================== */
-
 .logo {
-    text-align: center;
-    padding: 10px 0 38px;
+    padding: 5px 10px 45px;
 }
 
 .gea {
-    font-size: 34px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    color: #ffffff;
-    text-shadow:0 4px 12px rgba(0, 0, 0, 0.30);
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #fff;
 }
 
 .logo span {
     display: block;
-    margin-top: 7px;
-    color: #eaf3ff;
+    margin-top: 8px;
+    color: #dce7ef;
     font-size: 12px;
 }
 
-
-/* ========================================
+/* =========================
    MENU
-======================================== */
-
+   ========================= */
 .menu {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .menu a {
     display: block;
-    padding: 14px 16px;
-    border-radius: 10px;
+    padding: 13px 15px;
+    border-radius: 9px;
+    color: #dce7ef;
     text-decoration: none;
-    color: #eaf3ff;
-    font-size: 15px;
-    font-weight: 500;
-    transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.25s;
 }
-
-
-/* HOVER */
 
 .menu a:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
-    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
 }
 
-
-/* ABA ATIVA */
-
-.menu a.class-menu {
-    background: #ffffff;
-    color: #0d47a1;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+.menu a.active {
+    background: #fff;
+    color: #1d374c;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
 }
 
-
-/* ========================================
-   BOTÃO SAIR
-======================================== */
-
+/* =========================
+   SAIR
+   ========================= */
 .button-exit {
     margin-top: auto;
 }
@@ -138,310 +123,346 @@ aside {
 .exit-menu {
     display: block;
     padding: 12px;
-    border-radius: 9px;
-    background: rgba(255, 255, 255, 0.12);
-    color: #eaf3ff;
-    text-align: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    color: #dce7ef;
     text-decoration: none;
-    font-size: 14px;
-    transition: 0.3s ease;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.25s;
 }
 
 .exit-menu:hover {
-    background: #dc2626;
-    color: #ffffff;
-    transform: translateY(-2px);
+    background: #fff;
+    color: #1d374c;
 }
 
-
-/* ========================================
-   CONTEÚDO PRINCIPAL
-======================================== */
-
-main {
+/* =========================
+   CONTEÚDO
+   ========================= */
+.content {
+    position: relative;
+    z-index: 1;
+    width: calc(100% - 245px);
     min-height: 100vh;
-    width: calc(100% - 250px);
-    margin-left: 250px;
-    padding: 45px 50px;
-    background: #f4f7fb;
+    margin-left: 245px;
+    padding: 45px 55px 60px;
 }
-
-
-/* ========================================
-   TÍTULO
-======================================== */
 
 .page-title {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(104, 128, 149, 0.25);
 }
 
 .page-title h1 {
-    color: #0d47a1;
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 7px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #20384d;
 }
 
 .page-title p {
-    color: #5f6b7a;
-    font-size: 15px;
+    margin-top: 7px;
+    color: #7c8d9c;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-
-/* ========================================
-   ÁREA SUPERIOR
-======================================== */
-
-.select-container {
-    width: 100%;
-    max-width: 500px;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    background: linear-gradient( 135deg, #020b18, #0d47a1);
-    border: 2px solid rgba(25, 118, 210, 0.55);
-    border-radius: 18px;
-    box-shadow: 0 8px 20px rgba(2, 11, 24, 0.20);
-    transition: 0.3s ease;
-}
-
-
-/* AO PASSAR O MOUSE */
-
-.select-container:hover {
-    border-color: #1976d2;
-    box-shadow: 0 10px 25px rgba(13, 71, 161, 0.30);
-    transform: translateY(-2px);
-}
-
-
-/* ========================================
-   ÍCONE DO SELECT
-======================================== */
-
-.select-icon {
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.12);
-    font-size: 23px;
-}
-
-
-/* ========================================
-   SELECT
-======================================== */
-
-.select-container select {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    background: transparent;
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    appearance: auto;
-}
-
-/* OPÇÕES */
-
-.select-container select option {
-    background: #020b18;
-    color: #ffffff;
-    padding: 10px;
-}
-
-/* ========================================
-   ÁREA DOS ALUNOS
-======================================== */
-
+/* =========================
+   FILTRO DE TURMAS
+   ========================= */
+.turmas-section,
 .alunos-section {
-    width: 100%;
-    margin-top: 25px;
-    padding: 25px;
-    background: #ffffff;
-    border-radius: 20px;
-    border: 1px solid rgba(13, 71, 161, 0.08);
-    box-shadow: 0 8px 25px rgba(2, 11, 24, 0.08);
-    transition: 0.3s ease;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(211, 222, 231, 0.95);
+    box-shadow: 0 12px 30px rgba(31, 51, 68, 0.08);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
 }
 
+.turmas-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 28px;
+    margin-bottom: 22px;
+}
 
-/* ========================================
-   CABEÇALHO DOS ALUNOS
-======================================== */
+.turmas-section label {
+    color: #34495a;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#selectTurma {
+    width: 100%;
+    max-width: 360px;
+    min-height: 48px;
+    padding: 0 14px;
+    border: 1px solid #d3dee7;
+    border-radius: 9px;
+    outline: none;
+    background: #f7f9fb;
+    color: #243746;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#selectTurma:hover {
+    border-color: #b8c8d5;
+}
+
+#selectTurma:focus {
+    border-color: #6689a2;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(102, 137, 162, 0.10);
+}
+
+/* =========================
+   ALUNOS E SITUAÇÃO
+   ========================= */
+.alunos-section {
+    padding: 28px;
+}
 
 .alunos-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 16px;
-    margin-bottom: 18px;
-    border-bottom: 2px solid #e8eef6;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(104, 128, 149, 0.20);
 }
 
 .alunos-header h2 {
-    color: #0d47a1;
-    font-size: 22px;
+    color: #20384d;
+    font-size: 21px;
 }
 
-.alunos-header span {
-    padding: 7px 12px;
+#contadorAlunos {
+    padding: 7px 11px;
     border-radius: 20px;
-    background: #e8f1ff;
-    color: #0d47a1;
-    font-size: 13px;
-    font-weight: bold;
+    background: #eef3f7;
+    color: #55758e;
+    font-size: 12px;
+    font-weight: 700;
 }
-
-
-/* ========================================
-   LISTA DE ALUNOS
-======================================== */
 
 .lista-alunos {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    padding-top: 8px;
 }
 
+.estado-vazio {
+    padding: 35px 15px;
+    text-align: center;
+}
 
-/* ========================================
-   CARD DO ALUNO
-======================================== */
+.estado-icone {
+    display: inline-flex;
+    width: 58px;
+    height: 58px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    border-radius: 14px;
+    background: #eef3f7;
+    color: #294d68;
+    font-size: 28px;
+}
 
-.aluno-card {
-    min-height: 60px;
+.estado-vazio h3 {
+    margin-bottom: 9px;
+    color: #34495a;
+    font-size: 17px;
+}
+
+.estado-vazio p {
+    max-width: 420px;
+    margin: 0 auto;
+    color: #8495a3;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.aluno-linha {
     display: flex;
     align-items: center;
-    padding: 10px 15px;
-    background: #f7faff;
-    border: 1px solid #e2ebf7;
-    border-radius: 12px;
-    transition: 0.25s ease;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 4px;
+    border-bottom: 1px solid #edf1f5;
 }
 
-
-/* HOVER */
-
-.aluno-card:hover {
-    background: #eef5ff;
-    border-color: #b8d2f5;
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.08);
+.aluno-linha:last-child {
+    border-bottom: none;
 }
 
-
-/* ========================================
-   NÚMERO DO ALUNO
-======================================== */
-
-.numero-aluno {
-    width: 40px;
-    color: #1976d2;
+.aluno-nome {
+    color: #34495a;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
-
-/* ========================================
-   NOME DO ALUNO
-======================================== */
-
-.nome-aluno {
-    flex: 1;
-    color: #1e293b;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-
-/* ========================================
-   STATUS
-======================================== */
-
-.status-aluno {
-    min-width: 105px;
-    padding: 8px 14px;
+.aluno-situacao {
+    flex-shrink: 0;
+    padding: 7px 11px;
     border-radius: 20px;
-    text-align: center;
-    font-size: 13px;
-    font-weight: bold;
+    background: #eef3f7;
+    color: #55758e;
+    font-size: 12px;
+    font-weight: 700;
 }
 
+/* =========================
+   ANIMAÇÃO
+   ========================= */
+@keyframes focoSuave {
+    from {
+        opacity: 0;
+        filter: blur(8px);
+    }
 
-/* PRESENTE */
-
-.status-presente {
-    background: #e6f7ed;
-    color: #15803d;
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
 }
 
-/* FALTOU */
-
-.status-faltou {
-    background: #feecec;
-    color: #dc2626;
-}
-
-/* ATRASADO */
-
-.status-atrasado {
-    background: #fff4d6;
-    color: #b7791f;
-}
-
-/* ========================================
+/* =========================
    RESPONSIVIDADE
-======================================== */
-
-@media (max-width: 900px) {
-    aside {
-        width: 210px;
+   ========================= */
+@media (max-width: 700px) {
+    .turmas {
+        display: block;
     }
-    main {
-        width: calc(100% - 210px);
-        margin-left: 210px;
-        padding: 35px;
-    }
-    .select-container {
-        max-width: 100%;
-    }
-}
 
-
-@media (max-width: 650px) {
-    aside {
+    .sidebar {
         position: relative;
         width: 100%;
         height: auto;
+        padding: 25px 20px;
     }
-    .turmas {
-        flex-direction: column;
+
+    .logo {
+        padding-bottom: 25px;
+        text-align: center;
     }
-    main {
+
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .menu a {
+        flex: 1;
+        min-width: 100px;
+        text-align: center;
+    }
+
+    .button-exit {
+        margin-top: 20px;
+    }
+
+    .content {
         width: 100%;
         margin-left: 0;
-        padding: 25px;
+        padding: 30px 20px;
     }
-    .alunos-header {
-        flex-direction: column;
+}
+
+@media (max-width: 450px) {
+    .content {
+        padding: 25px 15px;
+    }
+
+    .turmas-section,
+    .alunos-section {
+        padding: 20px 16px;
+    }
+
+    .page-title h1 {
+        font-size: 25px;
+    }
+
+    .aluno-linha {
         align-items: flex-start;
-        gap: 10px;
     }
-    .aluno-card {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .status-aluno {
-        margin-left: auto;
-    }
+}
+
+.form-linha{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0 22px}.form-linha input,.form-linha select{min-height:43px;padding:9px;border:1px solid #ccd8e2;border-radius:8px;max-width:100%;flex:1 1 200px}.form-linha button,.acoes-turma button{background:#25445d;color:white;border:0;border-radius:8px;padding:13px 17px;cursor:pointer}.acoes-turma{display:flex;gap:10px;flex-wrap:wrap}#mensagemTurmas{min-height:20px;color:#25445d;font-weight:600}.alunos-section h2{margin-bottom:12px}@media(max-width:700px){.form-linha{align-items:stretch;flex-direction:column}.form-linha input,.form-linha select{width:100%;flex:auto}}
+
+
+/* Menu compacto para celular; o layout desktop permanece inalterado. */
+.mobile-menu-toggle { display:none; }
+.mobile-menu-panel { display:contents; }
+@media (max-width:700px) {
+  .sidebar {
+    position:relative; inset:auto; width:auto; height:auto; min-height:0;
+    margin:12px 12px 0; padding:12px 16px; border-radius:16px;
+    display:flex; flex-direction:row; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:8px;
+  }
+  .sidebar .logo { margin:0; padding:0; text-align:left; flex:1; }
+  .sidebar .gea { font-size:26px; letter-spacing:2px; }
+  .sidebar .logo span, .sidebar .logo small { font-size:11px; margin-top:3px; }
+  .mobile-menu-toggle {
+    display:block; flex:none; width:44px; height:44px; padding:0;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3);
+    border-radius:10px; color:white; font-size:24px; cursor:pointer;
+  }
+  .mobile-menu-toggle:focus-visible { outline:3px solid white; outline-offset:2px; }
+  .mobile-menu-panel { display:none; flex-basis:100%; width:100%; padding-top:10px; }
+  .sidebar.menu-open .mobile-menu-panel { display:block; }
+  .sidebar .menu, .sidebar nav { display:flex; flex-direction:column; gap:6px; }
+  .sidebar .menu a, .sidebar nav a { flex:none; text-align:left; }
+  .sidebar .button-exit, .sidebar .sair { margin-top:12px; }
+  .content { width:100%; margin-left:0; padding:22px 15px 32px; }
+  .top { gap:12px; padding-bottom:18px; }
+  .overview { margin-top:18px; gap:12px; }
+  .main-stat,.small-stat,.attendance { min-height:0; padding:20px; }
+  .percentage-card { min-height:0; padding:20px; }
+  .quick-link { max-width:100%; }
+  .quick-access[aria-label="Registro de presença"] > .quick-link {
+    display:flex !important; width:100%; justify-content:space-between;
+  }
+}
+
+.cadastro-aluno{margin:22px 0}.cadastro-aluno p{margin-top:8px}#mensagemCadastroAluno{min-height:22px;color:#25445d;font-weight:600}.cadastro-aluno button:disabled{opacity:.6;cursor:wait}
+
+.botao-historico{border:0;border-radius:8px;background:#294b65;color:white;padding:10px 12px;cursor:pointer}.historico-aluno{margin-top:22px;padding:18px;background:#f3f7fb;border-radius:12px}.historico-aluno[hidden]{display:none}.historico-aluno h3{margin-bottom:10px}.historico-registro{padding:10px 0;border-bottom:1px solid #d7e2ec}.nota-historico{font-size:13px;color:#536a7c;line-height:1.5;margin:12px 0}.aluno-linha{gap:12px;flex-wrap:wrap}
+
+.botao-falta,.botao-desfazer{border:0;border-radius:8px;padding:10px 12px;cursor:pointer;font-weight:600}.botao-falta{background:#a03c36;color:#fff}.botao-desfazer{background:#e6eef5;color:#24445d}.botao-falta:disabled,.botao-desfazer:disabled{opacity:.5;cursor:wait}.aluno-linha button{min-height:40px}
+
+/* Alinhamento consistente da lista de alunos */
+.lista-alunos { width:100%; }
+.aluno-linha {
+  display:grid; grid-template-columns:minmax(180px,1fr) 170px 275px;
+  align-items:center; gap:20px; padding:16px 4px; min-height:78px;
+  flex-wrap:nowrap;
+}
+.aluno-identificacao { display:flex; flex-direction:column; gap:5px; min-width:0; }
+.aluno-nome { font-size:14px; line-height:1.35; overflow-wrap:anywhere; }
+.aluno-ra { color:#6b8091; font-size:12px; font-weight:500; }
+.aluno-situacao { justify-self:start; text-align:center; white-space:nowrap; }
+.aluno-acoes { display:grid; grid-template-columns:125px 138px; align-items:center; justify-content:end; gap:12px; }
+.aluno-acoes button { width:100%; min-height:40px; white-space:nowrap; font-size:12px; }
+@media (max-width:1050px) {
+  .aluno-linha { grid-template-columns:minmax(135px,1fr) 145px 250px; gap:12px; }
+  .aluno-acoes { grid-template-columns:112px 126px; gap:8px; }
+}
+@media (max-width:850px) {
+  .aluno-linha { grid-template-columns:minmax(0,1fr) auto; gap:12px; }
+  .aluno-situacao { justify-self:end; }
+  .aluno-acoes { grid-column:1 / -1; justify-content:start; grid-template-columns:repeat(2,minmax(0,150px)); }
+}
+@media (max-width:450px) {
+  .aluno-linha { grid-template-columns:minmax(0,1fr); padding:17px 0; gap:10px; }
+  .aluno-situacao { justify-self:start; }
+  .aluno-acoes { grid-column:1; grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; }
+  .aluno-acoes button { white-space:normal; }
 }

@@ -1,54 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G.E.A PCL</title>
-    <link rel="stylesheet" href="css/style.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>G.E.A PCL</title>
+ <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- Fundo -->
     <div id="background-effects"></div>
 
-    
-<main>
+    <!-- Conteúdo principal -->
+    <main>
 
-    <section>
+        <!-- Identidade da escola -->
+        <section class="login-brand">
 
-<div class="gea">G.E.A</div>
+            <div class="brand-content">
 
-<p class="school"> <b> Pedro Casemiro Leite </b> </p>
+                <span class="brand-label">G.E.A</span>
 
-    </section>
+                <h1>
+                    Gerenciamento de Alunos
+                </h1>
 
-<section>
+                <p>
+                    Sistema de gerenciamento escolar
+                    da Escola Pedro Casemiro Leite.
+                </p>
 
-<h1>Seja Bem-Vindo</h1>
+            </div>
 
-<form id="formstudent">
-    <label for="ra">RA do Aluno</label>
-
-    <input id="ra" type="text" placeholder="Digite seu RA" autocomplete="off" required>
-
-    <label for="password">Senha</label>
-
-    <input id="password" type="password" placeholder="Digite sua Senha" required>
-
-    <button class="intial-button">Registrar Acesso</button>
-</form>
-
-<div class="link-adm">
-    
-    <a href="gestao/gestao-login.html"> Acessar painel Administrativo</a>
-
-</div>
+        </section>
 
 
-</section>
-    
-</main>
+        <!-- Login do aluno -->
+        <section class="login-card">
 
-<script src="js/script.js"></script>
+            <h1>
+                Seja Bem-Vindo
+            </h1>
+
+            <form id="formstudent">
+
+                <label for="ra">
+                    RA do Aluno
+                </label>
+
+                <input
+                    id="ra"
+                    type="text"
+                    placeholder="Digite seu RA"
+                    autocomplete="off"
+                    required
+                >
+
+                <label for="password">
+                    Senha
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Digite sua Senha"
+                    required
+                >
+
+                <button
+                    class="intial-button"
+                    type="submit"
+                >
+                    Registrar Acesso
+                </button>
+
+                <button id="btn-logout-aluno" type="button" hidden style="display:none;width:100%;margin-top:12px;padding:12px;border:1px solid #294e68;border-radius:8px;background:#fff;color:#294e68;font-weight:700;cursor:pointer;">Sair da conta</button>
+
+                <p id="aviso-login" role="alert" aria-live="polite" style="display:none;color:#991b1b;background:#fee2e2;padding:12px;border-radius:8px;margin-top:12px;font-weight:600;"></p>
+
+            </form>
+
+            <!-- Link para a secretaria -->
+            <div class="link-adm">
+
+                <a href="secretaria/login.html">
+                    Acessar painel Administrativo
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- QR Code -->
+        <section class="qr-card">
+
+            <div class="qr-content">
+
+                <div class="qr-icon">
+                    ⌗
+                </div>
+
+                <h2>
+                    QR Code
+                </h2>
+
+                <p>
+                    Entre com RA e senha e aguarde a gestão liberar seu QR Code.
+                </p>
+
+                <!-- Espaço reservado para o QR -->
+                <div class="qr-placeholder" id="qrcode">
+
+                    <span class="qr-lock">
+                        🔒
+                    </span>
+
+                    <span>
+                        QR Code bloqueado
+                    </span>
+
+                </div>
+                <p id="qr-contador" role="status" aria-live="off" style="font-weight:700;margin-top:12px"></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="config-publica.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>

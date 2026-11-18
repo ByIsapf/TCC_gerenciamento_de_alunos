@@ -1,98 +1,255 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G.E.A PCL</title>
-    <link rel="stylesheet" href="../css/turmas.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Turmas | G.E.A PCL</title>
+ <link rel="stylesheet" href="../css/turmas.css">
+ <script src="../js/turmas.js" defer ></script>
 </head>
 <body>
 
+    <!-- =========================================
+         ESTRUTURA PRINCIPAL DA PÁGINA
+         ========================================= -->
+
     <div class="turmas">
 
-        <!-- MENU LATERAL -->
-        <aside>
 
-            <!-- LOGO -->
+        <!-- =====================================
+             MENU LATERAL
+             ===================================== -->
+
+        <aside class="sidebar" id="gea-sidebar">
+
+
+            <!-- LOGO DO SISTEMA -->
+
             <div class="logo">
-                <div class="gea">G.E.A</div>
+
+                <div class="gea">
+                    G.E.A
+                </div>
+
                 <span>Pedro Casemiro Leite</span>
+
             </div>
 
-            <!-- MENU -->
-            <nav class="menu">
 
-                <a href="dashboard.html" class="dash-menu">
-                    Dashboard</a>
+            <!-- BOTÃO DO MENU MOBILE -->
 
-                <a href="turmas.html" class="class-menu">
-                    Turmas</a>
+            <button
+                type="button"
+                class="mobile-menu-toggle"
+                aria-controls="gea-mobile-nav"
+                aria-expanded="false"
+                aria-label="Abrir menu de navegação"
+            >
+                ☰
+            </button>
 
-                <a href="configuracoes.html" class="config-menu">
-                    Configurações</a>
 
-            </nav>
+            <!-- NAVEGAÇÃO PRINCIPAL -->
 
-            <!-- BOTÃO SAIR -->
-            <div class="button-exit">
+            <div
+                class="mobile-menu-panel"
+                id="gea-mobile-nav"
+            >
 
-                <a href="gestao-login.html" class="exit-menu">
-                    Sair</a>
+                <nav class="menu">
+
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
+
+                    <a
+                        href="turmas.html"
+                        class="active"
+                    >
+                        Turmas
+                    </a>
+
+                    <a href="configuracoes.html">
+                        Configurações
+                    </a>
+
+                </nav>
+
+
+                <!-- BOTÃO SAIR -->
+
+                <div class="button-exit">
+
+                    <a
+                        href="../secretaria/login.html"
+                        class="exit-menu"
+                    >
+                        Sair
+                    </a>
+
+                </div>
 
             </div>
 
         </aside>
 
-        <!-- CONTEÚDO PRINCIPAL -->
-<main>
 
-    <!-- TÍTULO -->
-    <section class="page-title">
-        <h1>Turmas</h1>
-      
-    </section>
+        <!-- =====================================
+             CONTEÚDO PRINCIPAL
+             ===================================== -->
 
-    <!-- SELEÇÃO DA TURMA -->
-    <div class="select-container">
+        <main class="content">
 
-        <select id="selectTurma">
-            <option value="" disabled selected>
-                Selecione uma turma</option>
 
-            <option value="1A">1A</option>
-            <option value="1B">1B</option>
-            <option value="1C">1C</option>
-            <option value="1D">1D</option>
+            <!-- =================================
+                 CABEÇALHO DA PÁGINA
+                 ================================= -->
 
-            <option value="2A">2A</option>
-            <option value="2B">2B</option>
-            <option value="2C">2C</option>
-            <option value="2D">2D</option>
+            <header class="page-title">
 
-            <option value="3A">3A</option>
-            <option value="3B">3B</option>
-            <option value="3C">3C</option>
-            <option value="3D">3D</option>
-        </select>
+                <h1>Turmas</h1>
+
+                <p>
+                    Selecione uma turma, consulte o
+                    status de hoje e veja o histórico
+                    de cada aluno.
+                </p>
+
+            </header>
+
+
+            <!-- =================================
+                 CONSULTA DE TURMAS
+                 ================================= -->
+
+            <section class="turmas-section">
+
+
+                <!-- TÍTULO DA SEÇÃO -->
+
+                <h2>Consultar turma</h2>
+
+
+                <!-- SELECIONAR TURMA -->
+
+                <label for="selectTurma">
+                    Selecionar turma
+                </label>
+
+                <select id="selectTurma">
+
+                    <option value="">
+                        Selecione uma turma
+                    </option>
+
+                </select>
+
+
+                <!-- MENSAGEM DE STATUS -->
+
+                <p
+                    id="mensagemTurmas"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </section>
+
+
+            <!-- =================================
+                 LISTAGEM DE ALUNOS
+                 ================================= -->
+
+            <section class="alunos-section">
+
+
+                <!-- CABEÇALHO DA LISTA -->
+
+                <div class="alunos-header">
+
+                    <h2 id="tituloTurma">
+                        Selecione uma turma
+                    </h2>
+
+                    <span id="contadorAlunos">
+                        0 alunos
+                    </span>
+
+                </div>
+
+
+                <!-- =================================
+                     LISTA DE ALUNOS DA TURMA
+                     ================================= -->
+
+                <div
+                    id="listaAlunos"
+                    class="lista-alunos"
+                >
+
+                    <p>
+                        Escolha uma turma para
+                        consultar os alunos.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================
+                     HISTÓRICO DO ALUNO
+                     ================================= -->
+
+                <div
+                    id="historicoAluno"
+                    class="historico-aluno"
+                    hidden
+                >
+
+
+                    <!-- TÍTULO DO HISTÓRICO -->
+
+                    <h3 id="tituloHistorico">
+                        Histórico do aluno
+                    </h3>
+
+
+                    <!-- RESUMO DO HISTÓRICO -->
+
+                    <p id="resumoHistorico"></p>
+
+
+                    <!-- INFORMAÇÕES SOBRE FALTAS -->
+
+                    <p class="nota-historico">
+                        Somente faltas confirmadas pela
+                        secretaria entram no histórico.
+                        Dias sem registro não são
+                        automaticamente considerados faltas.
+                    </p>
+
+
+                    <!-- LISTAGEM DO HISTÓRICO -->
+
+                    <div id="listaHistorico"></div>
+
+                </div>
+
+            </section>
+
+        </main>
 
     </div>
 
-    <!-- LISTA DE ALUNOS -->
-    <section class="alunos-section" id="alunosSection">
 
-        <div class="alunos-header">
-            <h2 id="tituloTurma">
-                Selecione uma turma</h2>
+    <!-- =========================================
+         JAVASCRIPT DO MENU RESPONSIVO
+         ========================================= -->
 
-            <span id="contadorAlunos">
-                0 alunos</span>
-        </div>
-
-    </section>
-
-</main>
-
-</div>
+    <script
+        src="../js/mobile-menu.js"
+        defer
+    ></script>
 
 </body>
+
 </html>

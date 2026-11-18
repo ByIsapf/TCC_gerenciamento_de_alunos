@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G.E.A | Registrar entrada</title>
+  <link rel="stylesheet" href="../css/gestao.css">
+  <link rel="stylesheet" href="../css/registrar-entrada.css">
+</head>
+<body>
+
+    <!-- =========================================
+         ESTRUTURA PRINCIPAL DO DASHBOARD
+         ========================================= -->
+
+    <div class="dashboard">
+
+
+        <!-- =====================================
+             MENU LATERAL
+             ===================================== -->
+
+        <aside class="sidebar" id="gea-sidebar">
+
+
+            <!-- LOGO DO SISTEMA -->
+
+            <div class="logo">
+
+                <div class="gea">
+                    G.E.A
+                </div>
+
+                <span>Pedro Casemiro Leite</span>
+
+            </div>
+
+
+            <!-- BOTÃO DO MENU MOBILE -->
+
+            <button
+                class="mobile-menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="gea-mobile-nav"
+                aria-label="Abrir menu de navegação"
+            >
+                ☰
+            </button>
+
+
+            <!-- NAVEGAÇÃO PRINCIPAL -->
+
+            <div
+                class="mobile-menu-panel"
+                id="gea-mobile-nav"
+            >
+
+                <nav class="menu">
+
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
+
+                    <a href="turmas.html">
+                        Turmas
+                    </a>
+
+                    <a
+                        href="configuracoes.html"
+                        class="active"
+                    >
+                        Configurações
+                    </a>
+
+                </nav>
+
+
+                <!-- BOTÃO SAIR -->
+
+                <div class="button-exit">
+
+                    <a
+                        href="../secretaria/login.html"
+                        class="exit-menu"
+                        id="sair"
+                    >
+                        Sair
+                    </a>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================
+             CONTEÚDO PRINCIPAL
+             ===================================== -->
+
+        <main class="content">
+
+
+            <!-- =================================
+                 CABEÇALHO DA PÁGINA
+                 ================================= -->
+
+            <header class="top">
+
+                <div class="page-title">
+
+                    <span>
+                        G.E.A / Secretaria
+                    </span>
+
+                    <h1>Registrar entrada</h1>
+
+                    <p>
+                        Pesquise pelo RA e confirme a
+                        identidade antes de liberar o código.
+                    </p>
+
+                </div>
+
+
+                <!-- INFORMAÇÕES DO USUÁRIO -->
+
+                <div class="user-info">
+
+                    <strong>Gestão</strong>
+
+                    <small>P.C.L</small>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================
+                 PAINEL DE REGISTRO DE ENTRADA
+                 ================================= -->
+
+            <section
+                class="registro-panel"
+                aria-labelledby="registro-title"
+            >
+
+
+                <!-- CABEÇALHO DO REGISTRO -->
+
+                <div class="registro-heading">
+
+                    <span>
+                        CONTROLE DE ENTRADA
+                    </span>
+
+                    <h2 id="registro-title">
+                        Liberar QR Code do aluno
+                    </h2>
+
+                    <p>
+                        Digite o RA para gerar um código
+                        individual válido por 60 segundos.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================
+                     FORMULÁRIO DE BUSCA DO ALUNO
+                     ================================= -->
+
+                <form
+                    id="form"
+                    class="registro-form"
+                >
+
+
+                    <!-- REGISTRO DO ALUNO -->
+
+                    <label for="ra">
+                        RA do aluno
+                    </label>
+
+                    <input
+                        id="ra"
+                        name="ra"
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="Digite o RA do aluno"
+                        required
+                        maxlength="20"
+                        autocomplete="off"
+                    >
+
+
+                    <!-- BOTÃO GERAR QR CODE -->
+
+                    <button type="submit">
+                        Buscar e liberar QR Code
+                    </button>
+
+                </form>
+
+
+                <!-- =================================
+                     MENSAGEM DE STATUS
+                     ================================= -->
+
+                <p
+                    id="status"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+
+                <!-- =================================
+                     RESULTADO DA BUSCA
+                     ================================= -->
+
+                <section
+                    id="resultado"
+                    class="registro-resultado"
+                    hidden
+                >
+
+
+                    <!-- NOME DO ALUNO -->
+
+                    <h2 id="nome"></h2>
+
+
+                    <!-- RA DO ALUNO -->
+
+                    <p id="ra-aluno"></p>
+
+
+                    <!-- =================================
+                         EXIBIÇÃO DO QR CODE
+                         ================================= -->
+
+                    <div id="qrcode"></div>
+
+
+                    <!-- =================================
+                         CONTADOR DO QR CODE
+                         ================================= -->
+
+                    <p
+                        id="qr-contador-admin"
+                        role="status"
+                    ></p>
+
+
+                    <!-- INFORMAÇÕES DO QR CODE -->
+
+                    <p>
+                        QR Code individual válido por
+                        60 segundos. O aluno deve
+                        escanear e confirmar com sua conta.
+                    </p>
+
+                </section>
+
+            </section>
+
+
+            <!-- =================================
+                 LINK VOLTAR
+                 ================================= -->
+
+            <a
+                class="registro-voltar"
+                href="configuracoes.html"
+            >
+                ← Voltar às configurações
+            </a>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================
+         BIBLIOTECA PARA GERAR QR CODE
+         ========================================= -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+    <!-- =========================================
+         JAVASCRIPT DO REGISTRO DE ENTRADA
+         ========================================= -->
+
+    <script src="../js/registrar-entrada.js"></script>
+
+
+    <!-- =========================================
+         JAVASCRIPT DO MENU RESPONSIVO
+         ========================================= -->
+
+    <script
+        src="../js/mobile-menu.js"
+        defer
+    ></script>
+
+</body>
+
+</html>

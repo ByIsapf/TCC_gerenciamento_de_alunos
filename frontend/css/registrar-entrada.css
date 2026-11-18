@@ -1,0 +1,253 @@
+
+/* =========================================
+   SISTEMA G.E.A
+   ESTILOS DA PÁGINA REGISTRAR ENTRADA
+   ========================================= */
+
+
+/* =========================================
+   PAINEL PRINCIPAL
+   ========================================= */
+
+.registro-panel {
+    position: relative;
+    max-width: 950px;
+    margin-top: 24px;
+    padding: 28px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(29, 55, 76, 0.08);
+}
+
+
+/* =========================================
+   CABEÇALHO DO REGISTRO
+   ========================================= */
+
+.registro-heading {
+    margin-bottom: 22px;
+}
+
+.registro-heading > span {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #617b90;
+}
+
+.registro-heading h2 {
+    margin-bottom: 8px;
+    font-size: 23px;
+    color: #20384d;
+}
+
+.registro-heading p {
+    color: #63788a;
+    line-height: 1.55;
+}
+
+
+/* =========================================
+   FORMULÁRIO DE REGISTRO
+   ========================================= */
+
+.registro-form {
+    display: grid;
+    gap: 10px;
+    max-width: 540px;
+}
+
+
+/* =========================================
+   LABELS DO FORMULÁRIO
+   ========================================= */
+
+.registro-form label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #20384d;
+}
+
+
+/* =========================================
+   CAMPOS DO FORMULÁRIO
+   ========================================= */
+
+.registro-form input {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
+    border: 1px solid #cad8e4;
+    border-radius: 9px;
+    background: #f7f9fb;
+    color: #20384d;
+    font: inherit;
+}
+
+
+/* =========================================
+   FOCO DOS CAMPOS
+   ========================================= */
+
+.registro-form input:focus-visible {
+    outline: 2px solid #426b8b;
+    outline-offset: 1px;
+}
+
+
+/* =========================================
+   BOTÃO DO FORMULÁRIO
+   ========================================= */
+
+.registro-form button {
+    min-height: 46px;
+    margin-top: 8px;
+    padding: 13px 18px;
+    border: 0;
+    border-radius: 9px;
+    background: #294b65;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   EFEITO HOVER DO BOTÃO
+   ========================================= */
+
+.registro-form button:hover {
+    background: #1d374c;
+}
+
+
+/* =========================================
+   MENSAGEM DE STATUS
+   ========================================= */
+
+#status {
+    margin-top: 16px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    color: #294b65;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   RESULTADO DO REGISTRO
+   ========================================= */
+
+.registro-resultado {
+    max-width: 540px;
+    margin-top: 22px;
+    padding: 22px;
+    border: 1px solid #dce7ef;
+    border-radius: 12px;
+    background: #f7f9fb;
+}
+
+.registro-resultado[hidden] {
+    display: none;
+}
+
+.registro-resultado h2 {
+    font-size: 21px;
+    color: #20384d;
+}
+
+.registro-resultado p {
+    margin-top: 10px;
+    color: #63788a;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   EXIBIÇÃO DO QR CODE
+   ========================================= */
+
+#qrcode {
+    display: inline-block;
+    max-width: 100%;
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #fff;
+}
+
+
+/* =========================================
+   IMAGEM E CANVAS DO QR CODE
+   ========================================= */
+
+#qrcode img,
+#qrcode canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================================
+   CONTADOR DO QR CODE
+   ========================================= */
+
+#qr-contador-admin {
+    font-weight: 700;
+    color: #294b65;
+}
+
+
+/* =========================================
+   LINK VOLTAR
+   ========================================= */
+
+.registro-voltar {
+    position: relative;
+    display: inline-block;
+    margin-top: 22px;
+    color: #294b65;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   EFEITO HOVER DO LINK
+   ========================================= */
+
+.registro-voltar:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+   CELULARES E TELAS MENORES
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    /* PAINEL PRINCIPAL */
+
+    .registro-panel {
+        margin-top: 18px;
+        padding: 22px 18px;
+    }
+
+    /* BOTÃO DO FORMULÁRIO */
+
+    .registro-form button {
+        width: 100%;
+    }
+
+    /* TÍTULO DO REGISTRO */
+
+    .registro-heading h2 {
+        font-size: 21px;
+    }
+
+}
